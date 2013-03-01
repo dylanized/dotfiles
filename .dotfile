@@ -1,5 +1,9 @@
 # DYLAN'S DOT FILE
 
+# SHORTCUTS
+
+	alias r='rm -Rf'
+
 # CD HELPERS
 
 	alias ..='cd ..'

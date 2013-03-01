@@ -30,10 +30,6 @@
 # EXPORT GIT AND UPLOAD TO FTP FOLDER
 # pass in ssh server + folder path
 	
-if [ $count -gt 0 ] && [ $somevar != $var ]; then
-...do something
-fi
-	
 	function gxp() {
 		if [ $# -gt 0  ]; then
 			FOLDER='temp'
@@ -45,3 +41,13 @@ fi
 			echo "Ex: gxp yourserver.com somefolder/subfolder"
 		fi
 	}
+	
+
+# UPLOAD SCRIPT
+
+	function up() {
+	
+		source .up		
+		gxp $SERVER $FOLDER				
+	
+	}	
