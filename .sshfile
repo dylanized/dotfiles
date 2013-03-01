@@ -1,8 +1,0 @@
-# DYLAN'S SSH ALIASES
-
-	alias simplifi="ssh simplifi@islanders.dreamhost.com"
-	alias loyalfamily="ssh loyalfamily@jubilee.dreamhost.com"
-	alias clients="ssh electro_clients@islanders.dreamhost.com"
-	alias zenpad="ssh electro_clients@islanders.dreamhost.com"
-	
-	
