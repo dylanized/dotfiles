@@ -15,16 +15,33 @@
 	
 	alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
-# GIT EXPORT HELPERS
-
-	function xx() {
-		rm -rf temp
-		mkdir temp
-		git archive --format=tar master | (cd temp/ && tar -xf -)
-	}
+# EXPORT GIT TO TEMP FOLDER
 	
-	function xp() {
-		xx
-		rsync -e ssh -av temp/ $1:$2 --delete
-		rm -rf export
+	function gx() {
+	   FOLDER='temp'
+       if [ $1 ]; then
+            FOLDER=$1
+        fi	
+		rm -rf $FOLDER
+		mkdir $FOLDER
+		git archive --format=tar master | (cd $FOLDER/ && tar -xf -)
+	}
+
+# EXPORT GIT AND UPLOAD TO FTP FOLDER
+# pass in ssh server + folder path
+	
+if [ $count -gt 0 ] && [ $somevar != $var ]; then
+...do something
+fi
+	
+	function gxp() {
+		if [ $# -gt 0  ]; then
+			FOLDER='temp'
+			gx
+			rsync -e ssh -av $FOLDER/ $1:$2 --delete
+			rm -rf $FOLDER
+		else
+			echo "ERROR: Missing SSH server or folder path!"
+			echo "Ex: gxp yourserver.com somefolder/subfolder"
+		fi
 	}
