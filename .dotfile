@@ -3,7 +3,8 @@
 # SHORTCUTS
 
 	alias r='rm -Rf'
-	alias l='ls -color -a'
+	alias l='ls -hal'
+	alias reload='source .bash_profile'
 
 # CD HELPERS
 
