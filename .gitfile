@@ -1,9 +1,5 @@
 # GIT HELPERS
 	
-	alias c="git add -A | git commit -m '$*'"
-	alias p="git add -A | git commit -m '$*' | git push"
-	alias qp="git push"
-	
 	alias gp='git push origin HEAD'
 	alias gd='git diff'
 	alias gc='git commit'
@@ -14,17 +10,30 @@
 	alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 	
 	alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+	
+# GIT COMMIT AND COMMIT/PUSH HELPER	
 
+	function c() {
+		git add -A
+		git commit -m "$*"
+	}
+
+	function p() {
+		git add -A
+		git commit -m '$*'
+		git push
+	}
+	
 # EXPORT GIT TO TEMP FOLDER
 	
 	function gx() {
-	   FOLDER='temp'
+	   GXFOLDER=temp
        if [ $1 ]; then
-            FOLDER=$1
+            GXFOLDER=$1
         fi	
-		rm -rf $FOLDER
-		mkdir $FOLDER
-		git archive --format=tar master | (cd $FOLDER/ && tar -xf -)
+		rm -rf $GXFOLDER
+		mkdir $GXFOLDER
+		git archive --format=tar master | (cd $GXFOLDER/ && tar -xf -)
 	}
 
 # EXPORT GIT AND UPLOAD TO FTP FOLDER
@@ -32,22 +41,17 @@
 	
 	function gxp() {
 		if [ $# -gt 0  ]; then
-			FOLDER='temp'
+			GXPFOLDER=temp
 			gx
-			rsync -e ssh -av $FOLDER/ $1:$2 --delete
-			rm -rf $FOLDER
+			rsync -e ssh -av $GXPFOLDER/ $1:$2 --delete
+			rm -rf $GXPFOLDER
 		else
 			echo "ERROR: Missing SSH server or folder path!"
 			echo "Ex: gxp yourserver.com somefolder/subfolder"
 		fi
-	}
+	}		
 	
-
-# UPLOAD SCRIPT
-
-	function up() {
+# TODOS:
+# - merge up and gxp?	
+# - make it check for .up file, fail gracefully
 	
-		source .up		
-		gxp $SERVER $FOLDER				
-	
-	}	
