@@ -98,7 +98,15 @@
 	
 # internet blocker
 
-alias block="sudo cp /hosts_blocked.txt /etc/hosts"
-alias unblock="sudo cp /hosts.txt /etc/hosts"
+function block() {
+ 	if [ $1 ]; then
+ 		BLOCKFILE=/hosts/$1.txt
+    else	
+		BLOCKFILE=/hosts/blocked.txt
+	fi	
+	sudo cp $BLOCKFILE /etc/hosts
+}
+
+alias unblock="sudo cp /hosts/unblocked.txt /etc/hosts"
 
 	
