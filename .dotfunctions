@@ -88,3 +88,11 @@
 		sleep 1 && open "http://${ip}:${port}/" &
 		php -S "${ip}:${port}"
 	}
+	
+# delete Mac trash and downloads
+
+	function trash() {
+		rm -rf ~/.Trash/*.*
+		rm -rf ~/Downloads/*.*	
+	}
+	
