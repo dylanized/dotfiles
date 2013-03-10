@@ -1,8 +1,6 @@
 # GIT HELPERS
 	
-	alias gp='git push origin HEAD'
 	alias gd='git diff'
-	alias gc='git commit'
 	alias gca='git commit -a'
 	alias gco='git checkout'
 	alias gb='git branch'
@@ -17,11 +15,26 @@
 		git add -A
 		git commit -m "$*"
 	}
-
+	
 	function p() {
 		git add -A
 		git commit -m '$*'
 		git push
+	}
+
+	function ga() {
+		git add $*
+	}
+	
+	function gc() {
+		git commit -m "$*"	
+	}
+
+	alias gp='git push origin HEAD'
+	
+	function gcp() {
+		git commit -m "$*"	
+		git push origin HEAD
 	}
 	
 # EXPORT GIT TO TEMP FOLDER
