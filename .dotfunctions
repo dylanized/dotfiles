@@ -96,3 +96,9 @@
 		rm -rf ~/Downloads/*.*	
 	}
 	
+# internet blocker
+
+alias block="sudo cp /hosts_blocked.txt /etc/hosts"
+alias unblock="sudo cp /hosts.txt /etc/hosts"
+
+	
