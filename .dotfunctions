@@ -92,8 +92,8 @@
 # delete Mac trash and downloads
 
 	function trash() {
-		rm -rf ~/.Trash/*.*
-		rm -rf ~/Downloads/*.*	
+		rm -rf ~/.Trash/*
+		rm -rf ~/Downloads/*
 	}
 	
 # internet blocker
