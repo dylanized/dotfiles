@@ -21,19 +21,19 @@
 	# ADD TRACKED CHANGES, THEN COMMIT
 	function gac() {
 		git commit -am "$*"
-	}	
+	}
+	
+	# ADD TRACKED CHANGES, COMMIT, THEN PUSH
+	function gacp() {
+		git commit -am "$*"	
+		git push
+	}
 	
 	# ADD ALL CHANGES, THEN COMMIT	
 	function c() {
 		git add -A
 		git commit -m "$*"
-	}
-	
-	# ADD TRACKED CHANGES, COMMIT, THEN PUSH
-	function gcp() {
-		git commit -am "$*"	
-		git push
-	}
+	}	
 
 	#  ADD ALL CHANGES, COMMIT, THEN PUSH	
 	function p() {
