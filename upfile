@@ -1,0 +1,38 @@
+# UPLOAD SCRIPT
+# looks for a .up file that sets SERVER, FOLDERPATH (optional), FOLDER, and REQUIRE (optional)
+
+	function up() {
+	
+		NAME="up"
+	
+		if [ $1 ]; then
+            NAME=$1
+        fi	
+        
+		source .$NAME
+		
+		# need to add multi conditional
+		
+		if [ $1 ]; then
+            cd $NAME
+        fi      
+        
+        if [ $FOLDERPATH ]; then
+        	SERVERPATH=$FOLDERPATH/$FOLDER
+        else
+        	SERVERPATH=$FOLDER
+       fi	
+        
+		gxp $SERVER $SERVERPATH
+
+		if [ $1 ]; then
+            cd ..
+        fi	
+        
+        if [ $REQUIRE ]; then
+        	cd $REQUIRE
+			gxp $SERVER $FOLDERPATH/$REQUIRE
+			cd ..        	
+        fi
+	
+	}
