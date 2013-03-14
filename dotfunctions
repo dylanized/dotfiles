@@ -89,14 +89,14 @@
 		php -S "${ip}:${port}"
 	}
 	
-# delete Mac trash and downloads
+# DELETE MAC TRASH AND DOWNLOADS
 
 	function trash() {
 		rm -rf ~/.Trash/*
 		rm -rf ~/Downloads/*
 	}
 	
-# internet blocker
+# INTERNET BLOCKER
 
 function block() {
  	if [ $1 ]; then
@@ -109,4 +109,11 @@ function block() {
 
 alias unblock="sudo cp /hosts/unblocked.txt /etc/hosts"
 
+# SEE 5 BIGGEST FILES
+
+alias findbig="find . -type f -exec ls -s {} \; | sort -n -r | head -5"
+
+# CLEAR HISTORY AND SCREEN
+
+alias hcl='history -c; clear'
 	

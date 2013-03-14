@@ -4,6 +4,7 @@
 
 	alias r='rm -Rf'
 	alias l='ls -hal'
+	alias x="exit"
 	alias reload='source ~/.bash_profile'
 
 # CD Helpers
