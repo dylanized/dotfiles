@@ -1,0 +1,138 @@
+# Aliases
+
+	alias n=node
+	alias e=express
+	alias s=sails
+	alias sl="sails lift"
+	alias ni="npm install"
+
+# NVM setup
+
+	[[ -s /Users/dylanhassinger/.nvm/nvm.sh ]] && . /Users/dylanhassinger/.nvm/nvm.sh # This loads NVM
+	
+	[[ -s /Users/dylanhassinger/.nvm/bash_completion ]] && . /Users/dylanhassinger/.nvm/bash_completion # This loads NVM
+
+# NPM completion
+
+	if npm -v >/dev/null 2>&1; then
+	. <(npm completion)
+	fi
+	
+	###-begin-npm-completion-###
+	#
+	# npm command completion script
+	#
+	# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+	# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+	#
+	
+	COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+	COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+	export COMP_WORDBREAKS
+	
+	if type complete &>/dev/null; then
+	_npm_completion () {
+	local si="$IFS"
+	IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+	                       COMP_LINE="$COMP_LINE" \
+	                       COMP_POINT="$COMP_POINT" \
+	                       npm completion -- "${COMP_WORDS[@]}" \
+	                       2>/dev/null)) || return $?
+	IFS="$si"
+	}
+	complete -F _npm_completion npm
+	elif type compdef &>/dev/null; then
+	_npm_completion() {
+	si=$IFS
+	compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+	             COMP_LINE=$BUFFER \
+	             COMP_POINT=0 \
+	             npm completion -- "${words[@]}" \
+	             2>/dev/null)
+	IFS=$si
+	}
+	compdef _npm_completion npm
+	elif type compctl &>/dev/null; then
+	_npm_completion () {
+	local cword line point words si
+	read -Ac words
+	read -cn cword
+	let cword-=1
+	read -l line
+	read -ln point
+	si="$IFS"
+	IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+	                   COMP_LINE="$line" \
+	                   COMP_POINT="$point" \
+	                   npm completion -- "${words[@]}" \
+	                   2>/dev/null)) || return $?
+	IFS="$si"
+	}
+	compctl -K _npm_completion npm
+	fi
+	###-end-npm-completion-###
+
+# Node module enviornment helpers
+	
+# Checks that the child directory is a subdirectory of the parent
+is_subdirectory() {
+    local child="$1"
+    local parent="$2"
+    if [[ "${child##${parent}}" != "$child" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Activates a new environment
+activate_env() {
+    # Check if the directory we've cd'ed into is a node environment directory
+    # (i.e., it contains a node_modules folder) and that a node envrionment
+    # does not already exist before creating a new one.
+    if [ -d "node_modules" ] && [ -z "$_ENV_DIR" ]; then
+
+        # Save the old PATH variable so we can revert back to it when we leave
+        # the environment
+        export _OLD_PATH="$PATH"
+
+        # An environment is essentially nothing more than an environment
+        # variable (_ENV_DIR) pointing the parent directory of our node
+        # environment. Create the variable and point it to $PWD.
+        export _ENV_DIR="$PWD"
+
+        # Add the bin folder for all local NPM installs to the PATH
+        export PATH="$(npm bin):$PATH"
+
+        # If an activation script exists, execute it
+        if [ -e ".activate" ]; then
+            source .activate
+        fi
+    fi
+}
+
+# Deactivates the current envrionment
+deactivate_env() {
+    # Make sure that an envrionment does exist and that the new
+    # directory is not a subdirectory of the envrionment directory
+    if [ -n "$_ENV_DIR" ] && ! is_subdirectory "$PWD" "$_ENV_DIR"; then
+
+        # Run the deactivation script if it exists
+        if [[ -e "$_ENV_DIR/.deactivate" ]]; then
+            source "$_ENV_DIR/.deactivate"
+        fi
+
+        # Revert back to the original PATH
+        export PATH="$_OLD_PATH"
+
+        # Destroy the environment
+        unset _ENV_DIR
+        unset _OLD_PATH
+    fi
+}
+
+env_cd() {
+    builtin cd "$@" && deactivate_env && activate_env
+}
+
+alias cd="env_cd"
