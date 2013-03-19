@@ -50,7 +50,7 @@
 	alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 	
 	function gi() {
-		git init $1
+		git init
 		git add *
 		git commit -m "initial commit"
 	}
