@@ -4,12 +4,15 @@
 	alias s=sails
 	alias sl="sails lift"
 	alias ni="npm install"
+	alias nv="node --version"
 	
 	function nu() {
 		COMMAND="nvm use v"
 		COMMANDVER=$COMMAND$1
 		$COMMANDVER
 	}
+	
+	alias g=grunt
 
 # NVM setup
 

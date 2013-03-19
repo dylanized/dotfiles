@@ -10,6 +10,7 @@
 	alias re='source ~/.bash_profile'
 	alias m=mkdir
 	alias e=cat
+	alias cl=clear
 
 # CD Helpers
 
