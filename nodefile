@@ -1,7 +1,6 @@
 # Aliases
 
 	alias n=node
-	alias e=express
 	alias s=sails
 	alias sl="sails lift"
 	alias ni="npm install"
