@@ -4,6 +4,12 @@
 	alias s=sails
 	alias sl="sails lift"
 	alias ni="npm install"
+	
+	function nu() {
+		COMMAND="nvm use v"
+		COMMANDVER=$COMMAND$1
+		$COMMANDVER
+	}
 
 # NVM setup
 
