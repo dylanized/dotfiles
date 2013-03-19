@@ -9,6 +9,7 @@
 	alias reload='source ~/.bash_profile'
 	alias re='source ~/.bash_profile'
 	alias m=mkdir
+	alias e=cat
 
 # CD Helpers
 
