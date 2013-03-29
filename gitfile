@@ -38,7 +38,7 @@
 	#  ADD ALL CHANGES, COMMIT, THEN PUSH	
 	function p() {
 		git add -A
-		git commit -m '$*'
+		git commit -m "$*"
 		git push
 	}
 		
