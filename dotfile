@@ -1,22 +1,26 @@
 # DYLAN'S DOT FILE 
 
+	function l () {
+		echo ""
+		ls -halFG
+		echo ""
+	}
+
 # Shortcuts
 
 	alias r='rm -Rf'
-	alias l='ls -halFG'
 	alias x="exit"
 	alias t="touch"
 	alias reload='source ~/.bash_profile'
 	alias re='source ~/.bash_profile'
 	alias m=mkdir
-	alias e=cat
 	alias cl=clear
 	
-	alias dropbox='cd /DROPBOX'
-	alias dr='cd /DROPBOX'
-	alias projects='cd /DROPBOX/500_PROJECTS'
-	alias pr='cd /DROPBOX/500_PROJECTS'
-	alias ~='cd ~'
+	alias dropbox='cd /DROPBOX | l'
+	alias dr='dropbox'
+	alias projects='cd /DROPBOX/500_PROJECTS | l'
+	alias pr='projects'
+	alias ~='cd ~ | l'
 	
 # CD Helpers
 

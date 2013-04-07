@@ -1,12 +1,40 @@
+# ECHO HELPER
+
+	function e() {
+		echo ""	
+		echo -en "\033[1m"
+
+		if [ -f ./$1.js ] ; then
+		    cat $1.js
+		elif [ -f ./$1.json ]; then
+			cat $1.json		
+		elif [ -f ./$1.md ]; then
+			cat $1.md		
+		elif [ -f ./$1.txt ]; then
+			cat $1.txt		
+		elif [ -f ./$1.php ]; then
+			cat $1.txt		
+		elif [ -f ./$1.css ]; then
+			cat $1.txt		
+		elif [ -f ./$1.html ]; then
+			cat $1.txt		
+		else
+			cat $*
+		fi
+		echo -en "\033[0m"
+		echo ""
+		echo ""
+	}
+
 # CREATE BACKUP OF FILE
 
-	bu () {
+	function bu() {
 	    cp $1 `basename $1`-`date +%Y%m%d%H%M`.backup ;
 	}
 	
 # EXTRACT ARCHIVE
 
-	extract () {
+	function extract () {
 	        if [ -f $1 ] ; then
 	                case $1 in
 	                        *.tar.bz2)       tar xjf $1                	;;
