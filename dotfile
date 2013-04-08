@@ -17,7 +17,10 @@
 	# MAKE FOLDER AND ENTER IT
 	function m() {
 		mkdir -p "$@" && cd "$@"
-	}	
+	}
+
+	alias config='vim config'
+	alias readme='vim README.md'	
 	
 # DIRECTORY HELPERS
 
@@ -30,7 +33,7 @@
 	}		
 
 	alias ~='d ~'
-	
+
 	alias ..='d ..'
 	alias cd..='d ..'
 	alias ...='d ../../../'
