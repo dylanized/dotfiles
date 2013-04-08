@@ -1,18 +1,27 @@
 # DYLAN'S DOT FILE 
 
-# Shortcuts
+# PROMPT
+	export PS1='\u@\[\e[0;35m\]$(scutil --get ComputerName):\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
 
-	alias l='echo ""; ls -halFG; echo -e "";'
-	# UNIX VERSION: alias l='echo ""; ls -halF --color=auto; echo "";'
+# SHORTCUTS
 
 	alias r='rm -Rf'
 	alias x=exit
 	alias t=touch
 	alias reload='source ~/.bash_profile'
 	alias re=reload
-	alias m=mkdir
 	alias cl=clear
 	
+	# MAKE FOLDER AND ENTER IT
+	function m() {
+		mkdir -p "$@" && cd "$@"
+	}	
+	
+# DIRECTORY HELPERS
+
+	alias l='echo ""; ls -halFG; echo -e "";'
+	# UNIX VERSION: alias l='echo ""; ls -halF --color=auto; echo "";'
+
 	function d() {
 		cd $*
 		l
@@ -20,8 +29,6 @@
 
 	alias ~='d ~'
 	
-# CD Helpers
-
 	alias ..='d ..'
 	alias cd..='d ..'
 	alias ...='d ../../../'
@@ -31,48 +38,128 @@
 	alias .5='d ../../../../..'
 	alias ,='d /'
 	
-# View Logs		
-alias logs="cd /var/log/apache2; ls;"
+# ECHO HELPER
 
-# List only directories
-alias lsd='ls -l ${colorflag} | grep "^d"'
+	function e() {
+		echo ""	
+		echo -en "\033[1m"
 
-# Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+		if ls $1.* &> /dev/null; then
+		
+			if [ -f README.md ] ; then
+				cat README.md
+			elif [ -f package.json ] ; then
+				cat package.json
+			elif [ -f index.php ] ; then
+				cat index.php
+			elif [ -f index.html ] ; then
+				cat index.html
+			fi
+				
+		elif [ -f ./$1.js ] ; then
+		    cat $1.js
+		elif [ -f ./$1.json ]; then
+			cat $1.json		
+		elif [ -f ./$1.md ]; then
+			cat $1.md		
+		elif [ -f ./$1.txt ]; then
+			cat $1.txt		
+		elif [ -f ./$1.php ]; then
+			cat $1.txt		
+		elif [ -f ./$1.css ]; then
+			cat $1.txt		
+		elif [ -f ./$1.html ]; then
+			cat $1.txt		
+		elif [ -f ./$1.sh ]; then
+			cat $1.txt	
+		elif [ -f ./$1.xml ]; then
+			cat $1.txt						
+		else
+			cat $*
+		fi
+		echo -en "\033[0m"
+		echo ""
+		echo ""
+	}
 
-export LS_COLORS='no=33:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+# CREATE BACKUP OF FILE
 
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
-# Gzip-enabled `curl`
-alias gurl="curl --compressed"
-
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-# Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
-# View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# Trim new lines and copy to clipboard
-alias clip="tr -d '\n' | pbcopy"
-
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all mounted volumes and the main HDD
-# Also, clear Apple’s System Logs to improve shell startup speed
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
+	function bu() {
+	    cp $1 `basename $1`-`date +%Y%m%d%H%M`.bak ;
+	}
 	
+# EXTRACT ARCHIVE
+
+	function extract () {
+	        if [ -f $1 ] ; then
+	                case $1 in
+	                        *.tar.bz2)       tar xjf $1                	;;
+	                        *.tar.gz)        tar xzf $1                	;;
+	                        *.bz2)           bunzip2 $1               	;;
+	                        *.rar)           rar x $1                	;;
+	                        *.gz)            gunzip $1                	;;
+	                        *.tar)           tar xf $1                	;;
+	                        *.tbz2)          tar xjf $1                	;;
+	                        *.tgz)           tar xzf $1                	;;
+	                        *.zip)           unzip $1                	;;
+	                        *.Z)             uncompress $1        		;;
+	                        *)               echo "'$1' cannot be extracted via extract()" ;;
+	                esac
+	        else
+	                echo "'$1' is not a valid file"
+	        fi
+	}
+	
+# CALCULATOR
+
+	function calc() {
+		local result=""
+		result="$(printf "scale=10;$*\n" | bc --mathlib | tr -d '\\\n')"
+		#                       └─ default (when `--mathlib` is used) is 20
+		#
+		if [[ "$result" == *.* ]]; then
+			# improve the output for decimal numbers
+			printf "$result" |
+			sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
+			    -e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
+			    -e 's/0*$//;s/\.$//'   # remove trailing zeros
+		else
+			printf "$result"
+		fi
+		printf "\n"
+	}
+
+# GET FILE/DIR SIZE
+
+	function fs() {
+		if du -b /dev/null > /dev/null 2>&1; then
+			local arg=-sbh
+		else
+			local arg=-sh
+		fi
+		if [[ -n "$@" ]]; then
+			du $arg -- "$@"
+		else
+			du $arg .[^.]* *
+		fi
+	}	
+	
+# MISC STUFF		
+		
+	# View Logs		
+	alias logs="cd /var/log/apache2; ls;"
+	
+	# List only directories
+	alias lsd='ls -l ${colorflag} | grep "^d"'
+	
+	# Enable aliases to be sudo’ed
+	alias sudo='sudo '
+	
+	# Flush Cache
+	alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+	# Recursively delete `.DS_Store` files
+	alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+	# See 5 Biggest Files
+	alias findbig="find . -type f -exec ls -s {} \; | sort -n -r | head -5"

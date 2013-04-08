@@ -89,9 +89,4 @@
 			echo "ERROR: Missing SSH server or folder path!"
 			echo "Ex: gxp yourserver.com somefolder/subfolder"
 		fi
-	}		
-	
-# TODOS:
-# - merge up and gxp?	
-# - make it check for .up file, fail gracefully
-	
+	}	
