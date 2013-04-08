@@ -4,7 +4,19 @@
 		echo ""	
 		echo -en "\033[1m"
 
-		if [ -f ./$1.js ] ; then
+		if ls $1.* &> /dev/null; then
+		
+			if [ -f README.md ] ; then
+				cat README.md
+			elif [ -f package.json ] ; then
+				cat package.json
+			elif [ -f index.php ] ; then
+				cat index.php
+			elif [ -f index.html ] ; then
+				cat index.html
+			fi
+				
+		elif [ -f ./$1.js ] ; then
 		    cat $1.js
 		elif [ -f ./$1.json ]; then
 			cat $1.json		
@@ -18,6 +30,10 @@
 			cat $1.txt		
 		elif [ -f ./$1.html ]; then
 			cat $1.txt		
+		elif [ -f ./$1.sh ]; then
+			cat $1.txt	
+		elif [ -f ./$1.xml ]; then
+			cat $1.txt						
 		else
 			cat $*
 		fi
