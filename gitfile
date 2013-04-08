@@ -42,7 +42,10 @@
 		git push
 	}
 		
-	alias gp='git push'
+	function gp() {
+		git push "$*"
+	}
+	
 	alias push='git push'
 	alias pull='git pull'
 	
