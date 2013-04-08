@@ -18,16 +18,21 @@
 	alias projects='cd /DROPBOX/500_PROJECTS | l'
 	alias pr='projects'
 	alias ~='cd ~ | l'
+
+	function d() {
+		cd $*
+		l
+	}
 	
 # CD Helpers
 
-	alias ..='cd ..; l'
-	alias cd..='cd ..; l'
-	alias ...='cd ../../../; l'
-	alias ....='cd ../../../../; l'
-	alias .....='cd ../../../../; l'
-	alias .4='cd ../../../../; l'
-	alias .5='cd ../../../../..; l'	
+	alias ..='d ..'
+	alias cd..='d ..'
+	alias ...='d ../../../'
+	alias ....='d ../../../../'
+	alias .....='d ../../../../'
+	alias .4='d ../../../../'
+	alias .5='d ../../../../..'	
 	
 # View Logs		
 alias logs="cd /var/log/apache2; ls;"
