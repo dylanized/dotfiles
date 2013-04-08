@@ -43,6 +43,8 @@
 	}
 		
 	alias gp='git push'
+	alias push='git push'
+	alias pull='git pull'
 	
 	alias gd='git diff'		
 	alias gb='git branch'
