@@ -22,7 +22,7 @@
 	function d() {
 		cd $*
 		l
-	}
+	}		
 	
 # CD Helpers
 
@@ -32,7 +32,8 @@
 	alias ....='d ../../../../'
 	alias .....='d ../../../../'
 	alias .4='d ../../../../'
-	alias .5='d ../../../../..'	
+	alias .5='d ../../../../..'
+	alias ,='d /'
 	
 # View Logs		
 alias logs="cd /var/log/apache2; ls;"
