@@ -96,6 +96,8 @@
 				cat index.html
 			elif [ -f readme.txt ] ; then
 				cat readme.txt
+                        elif [ -f config ] ; then
+                                cat config
 			fi 
 			
 		fi
