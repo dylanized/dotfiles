@@ -38,14 +38,52 @@
 	alias .5='d ../../../../..'
 	alias ,='d /'
 	
+# SHORTCUTS
+
+	alias dotfiles='d ~/dotfiles'
+	alias dot=dotfiles
+	alias profile='vim ~/.bash_profile'
+	
 # ECHO HELPER
 
 	function e() {
 		echo ""	
 		echo -en "\033[1m"
-
-		if ls $1.* &> /dev/null; then
 		
+		if [ $1 ] ; then
+		
+			# FILENAME PROVIDED
+			
+			if [ -f $1 ] ; then
+				cat $1
+			elif [ -f ./$1.js ] ; then
+			    cat $1.js
+			elif [ -f ./$1.json ]; then
+				cat $1.json		
+			elif [ -f ./$1.md ]; then
+				cat $1.md		
+			elif [ -f ./$1.txt ]; then
+				cat $1.txt		
+			elif [ -f ./$1.php ]; then
+				cat $1.txt		
+			elif [ -f ./$1.css ]; then
+				cat $1.txt		
+			elif [ -f ./$1.html ]; then
+				cat $1.txt		
+			elif [ -f ./$1.sh ]; then
+				cat $1.txt	
+			elif [ -f ./$1.xml ]; then
+				cat $1.txt						
+			elif [ -f ./.$1 ]; then
+				cat .$1						
+			else
+				echo "ERROR: File not found!"
+			fi
+			
+		else
+		
+			# NO FILENAME PROVIDED
+			
 			if [ -f README.md ] ; then
 				cat README.md
 			elif [ -f package.json ] ; then
@@ -54,29 +92,12 @@
 				cat index.php
 			elif [ -f index.html ] ; then
 				cat index.html
-			fi
-				
-		elif [ -f ./$1.js ] ; then
-		    cat $1.js
-		elif [ -f ./$1.json ]; then
-			cat $1.json		
-		elif [ -f ./$1.md ]; then
-			cat $1.md		
-		elif [ -f ./$1.txt ]; then
-			cat $1.txt		
-		elif [ -f ./$1.php ]; then
-			cat $1.txt		
-		elif [ -f ./$1.css ]; then
-			cat $1.txt		
-		elif [ -f ./$1.html ]; then
-			cat $1.txt		
-		elif [ -f ./$1.sh ]; then
-			cat $1.txt	
-		elif [ -f ./$1.xml ]; then
-			cat $1.txt						
-		else
-			cat $*
+			elif [ -f readme.txt ] ; then
+				cat readme.txt
+			fi 
+			
 		fi
+		
 		echo -en "\033[0m"
 		echo ""
 		echo ""
