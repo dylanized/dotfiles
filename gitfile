@@ -49,6 +49,12 @@
 	alias push='git push'
 	alias pull='git pull'
 	
+	function gpa() {
+		git add -A
+		git commit -m "$*"
+		git push all master	
+	}
+	
 	alias gd='git diff'		
 	alias gb='git branch'
 	alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
