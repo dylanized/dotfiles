@@ -61,6 +61,8 @@
 	alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 	alias gm="git merge"
 	alias gmv='git mv $*'
+	alias gr='git remote'
+	alias gf='git fetch'
 	
 	function gi() {
 		git init
@@ -100,4 +102,50 @@
 			echo "ERROR: Missing SSH server or folder path!"
 			echo "Ex: gxp yourserver.com somefolder/subfolder"
 		fi
+	}
+	
+# CREATE BARE REPO
+# First argument is repo name, second argument is path to working tree
+
+function bare2() {
+	cat >post-receive <<EOF
+#!/bin/sh
+GIT_WORK_TREE=$2 git checkout -f
+EOF
+}
+
+	function bare() {
+	
+		if [ $# = 2 ]; then
+		
+			echo "Creating repo folder $1.git..."
+			mkdir $1.git
+			
+			echo "Setting up bare repo..."
+			cd $1.git
+			git init --bare .
+			
+			echo "Adding deployment hook..."
+			cd hooks
+			
+			cat >post-receive <<EOF
+#!/bin/sh
+GIT_WORK_TREE=$2 git checkout -f
+EOF
+
+			chmod +x post-receive
+			
+			echo "Creating working tree folder $2"
+			mkdir $2
+			
+			cd ..
+			echo "Done! Push to the repo to export the working tree"		
+			
+		else
+		
+			echo "Please provide repo name and working tree path (from the repo)"
+			echo "EX: bare sample_repo ../../sample_repo.dev"
+			
+		fi
+		
 	}	
