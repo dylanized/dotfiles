@@ -104,15 +104,8 @@
 		fi
 	}
 	
-# CREATE BARE REPO  
+# CREATE BARE REPO
 # First argument is repo name, second argument is path to working tree
-
-function bare2() {
-	cat >post-receive <<EOF
-#!/bin/sh
-GIT_WORK_TREE=$2 git checkout -f
-EOF
-}
 
 	function bare() {
 	
@@ -134,6 +127,7 @@ GIT_WORK_TREE=$2 git checkout -f
 EOF
 
 			chmod +x post-receive
+			cd ..
 			
 			echo "Creating working tree folder $2"
 			mkdir $2

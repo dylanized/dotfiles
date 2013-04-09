@@ -99,8 +99,10 @@
 				cat index.html
 			elif [ -f readme.txt ] ; then
 				cat readme.txt
-                        elif [ -f config ] ; then
-                                cat config
+			elif [ -f config ] ; then
+				cat config
+			elif [ -f post-receive ] ; then
+				cat post-receive
 			fi 
 			
 		fi
