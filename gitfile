@@ -104,7 +104,7 @@
 		fi
 	}
 	
-# CREATE BARE REPO 
+# CREATE BARE REPO  
 # First argument is repo name, second argument is path to working tree
 
 function bare2() {
