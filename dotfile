@@ -1,5 +1,11 @@
 # DYLAN'S DOT FILE!
+	
+# SHORTCUTS
 
+	alias dotfiles='d ~/dotfiles'
+	alias dot=dotfiles
+	alias profile='vim ~/.bash_profile'
+	
 # PROMPT
 	source dotfiles/lib/git-prompt.sh
 	source dotfiles/lib/git-completion.bash	
@@ -43,12 +49,6 @@
 	alias .4='d ../../../../'
 	alias .5='d ../../../../..'
 	alias ,='d /'
-	
-# SHORTCUTS
-
-	alias dotfiles='d ~/dotfiles'
-	alias dot=dotfiles
-	alias profile='vim ~/.bash_profile'
 	
 # ECHO HELPER
 
@@ -177,9 +177,6 @@
 	
 # MISC STUFF		
 		
-	# View Logs		
-	alias logs="cd /var/log/apache2; ls;"
-	
 	# List only directories
 	alias lsd='ls -l ${colorflag} | grep "^d"'
 	
