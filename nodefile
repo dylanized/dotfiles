@@ -18,7 +18,15 @@
 			# NO ARGUMENTS, RUN APP.JS
 			FILENAME="app.js"
 		fi
+		
+		echo ""	
+		echo -en "\033[1m"
+		
 		node $FILENAME
+		
+		echo -en "\033[0m"
+		echo ""		
+		
 	}	
 	
 	function nu() {
