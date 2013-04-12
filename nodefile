@@ -1,18 +1,31 @@
 # Aliases
 
-	alias n=node
 	alias s=sails
 	alias sl="sails lift"
 	alias ni="npm install"
-	alias nv="node --version"
+	alias nv="node --version"	
+	alias g=grunt
+	
+	function n() {
+		if [ $1 ] ; then
+			# ARGUMENT(S) GIVEN	
+			if [[ "$1" != *.js* ]] ; then
+				FILENAME="$1.js"
+			else
+				FILENAME=$1
+			fi
+		else
+			# NO ARGUMENTS, RUN APP.JS
+			FILENAME="app.js"
+		fi
+		node $FILENAME
+	}	
 	
 	function nu() {
 		COMMAND="nvm use v"
 		COMMANDVER=$COMMAND$1
 		$COMMANDVER
-	}
-	
-	alias g=grunt
+	}		
 
 # NVM setup
 
