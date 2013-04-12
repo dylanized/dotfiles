@@ -88,15 +88,21 @@
 			elif [ -f ./$1.txt ]; then
 				cat $1.txt		
 			elif [ -f ./$1.php ]; then
-				cat $1.txt		
+				cat $1.php		
 			elif [ -f ./$1.css ]; then
-				cat $1.txt		
+				cat $1.css		
 			elif [ -f ./$1.html ]; then
-				cat $1.txt		
+				cat $1.html		
 			elif [ -f ./$1.sh ]; then
-				cat $1.txt	
+				cat $1.sh	
+			elif [ -f ./$1.haml ]; then
+				cat $1.haml						
+			elif [ -f ./$1.less ]; then
+				cat $1.less
+			elif [ -f ./$1.scss ]; then
+				cat $1.scss				
 			elif [ -f ./$1.xml ]; then
-				cat $1.txt						
+				cat $1.xml						
 			elif [ -f ./.$1 ]; then
 				cat .$1						
 			else
@@ -117,6 +123,8 @@
 				cat index.html
 			elif [ -f index.js ] ; then
 				cat index.js
+			elif [ -f index.haml ] ; then
+				cat index.haml
 			elif [ -f readme.txt ] ; then
 				cat readme.txt
 			elif [ -f config ] ; then
