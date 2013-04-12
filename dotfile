@@ -82,7 +82,7 @@
 			elif [ -f ./$1.json ]; then
 				cat $1.json		
 			elif [ -f ./$1.ejs ]; then
-				cat $1.json		
+				cat $1.ejs		
 			elif [ -f ./$1.md ]; then
 				cat $1.md		
 			elif [ -f ./$1.txt ]; then
