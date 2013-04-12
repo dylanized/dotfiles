@@ -81,6 +81,8 @@
 			    cat $1.js
 			elif [ -f ./$1.json ]; then
 				cat $1.json		
+			elif [ -f ./$1.ejs ]; then
+				cat $1.json		
 			elif [ -f ./$1.md ]; then
 				cat $1.md		
 			elif [ -f ./$1.txt ]; then
@@ -113,6 +115,8 @@
 				cat index.php
 			elif [ -f index.html ] ; then
 				cat index.html
+			elif [ -f index.js ] ; then
+				cat index.js
 			elif [ -f readme.txt ] ; then
 				cat readme.txt
 			elif [ -f config ] ; then
