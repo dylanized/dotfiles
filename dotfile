@@ -2,13 +2,13 @@
 	
 # SHORTCUTS
 
-	alias dotfiles='d ~/dotfiles'
+	alias dotfiles='d ~/.dotfiles'
 	alias dot=dotfiles
 	alias profile='vim ~/.bash_profile'
 	
 # PROMPT
-	source ~/dotfiles/lib/git-prompt.sh
-	source ~/dotfiles/lib/git-completion.bash	
+	source ~/.dotfiles/lib/git-prompt.sh
+	source ~/.dotfiles/lib/git-completion.bash	
 	export PS1='\u@\[\e[0;35m\]$(scutil --get ComputerName):\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
 	# UNIX VERSION: PS1='\u@\[\e[0;35m\]\h:\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
 	
