@@ -1,11 +1,5 @@
 # DYLAN'S DOT FILE!
 	
-# SHORTCUTS
-
-	alias dotfiles='d ~/.dotfiles'
-	alias dot=dotfiles
-	alias profile='vim ~/.bash_profile'
-	
 # PROMPT
 	source ~/.dotfiles/lib/git-prompt.sh
 	source ~/.dotfiles/lib/git-completion.bash	
@@ -28,9 +22,14 @@
 	alias r='rm -Rf'
 	alias x=exit
 	alias t=touch
+	alias cl=clear
+	
+	alias dotfiles='d ~/.dotfiles'
+	alias dot=dotfiles
+	alias profile='vim ~/.bash_profile'	
+	alias pro=profile
 	alias reload='source ~/.bash_profile'
 	alias re=reload
-	alias cl=clear
 	
 	# MAKE FOLDER AND ENTER IT
 	function m() {
