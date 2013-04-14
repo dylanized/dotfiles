@@ -285,3 +285,11 @@
 	
 	# Trim new lines and copy to clipboard
 	alias clip="tr -d '\n' | pbcopy"
+
+# INCLUDE OTHER DOTFILES
+
+	for f in ~/.dotfiles/*; do
+		if [ -f $f ] && [[ ! $f =~ "/dotfile" ]] && [[ ! $f =~ "README" ]]; then
+		   	source $f
+		fi
+	done
