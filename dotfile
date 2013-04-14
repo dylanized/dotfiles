@@ -90,7 +90,9 @@
 			elif [ -f ./$2.md ]; then
 				eval $1 $2.md		
 			elif [ -f ./$2.txt ]; then
-				eval $1 $2.txt		
+				eval $1 $2.txt
+			elif [ -f ./$2.log ]; then
+				eval $1 $2.log			
 			elif [ -f ./$2.php ]; then
 				eval $1 $2.php		
 			elif [ -f ./$2.css ]; then
@@ -135,7 +137,15 @@
 				eval $1 config
 			elif [ -f post-receive ] ; then
 				eval $1 post-receive
-			fi 
+			elif [ -f .gitconfig ] ; then
+				eval $1 .gitconfig
+			elif [ -f .profile ] ; then
+				eval $1 .profile
+			elif [ -f .bash_profile ] ; then
+				eval $1 .bash_profile
+			elif [ -f .bashrc ] ; then
+				eval $1 .bashrc
+			fi			
 			
 		fi
 			
