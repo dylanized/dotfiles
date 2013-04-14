@@ -67,46 +67,44 @@
 		d /
 	}
 	
-# ECHO HELPER
+# SMARTFILE HELPER
 
-	function e() {
-		echo ""	
-		echo -en "\033[1m"
-		
-		if [ $1 ] ; then
+	function smartfile() {
+	
+		if [ $2 ] ; then
 		
 			# FILENAME PROVIDED
 			
-			if [ -f $1 ] ; then
-				cat $1
-			elif [ -f ./$1.js ] ; then
-			    cat $1.js
-			elif [ -f ./$1.json ]; then
-				cat $1.json		
-			elif [ -f ./$1.ejs ]; then
-				cat $1.ejs		
-			elif [ -f ./$1.md ]; then
-				cat $1.md		
-			elif [ -f ./$1.txt ]; then
-				cat $1.txt		
-			elif [ -f ./$1.php ]; then
-				cat $1.php		
-			elif [ -f ./$1.css ]; then
-				cat $1.css		
-			elif [ -f ./$1.html ]; then
-				cat $1.html		
-			elif [ -f ./$1.sh ]; then
-				cat $1.sh	
-			elif [ -f ./$1.haml ]; then
-				cat $1.haml						
-			elif [ -f ./$1.less ]; then
-				cat $1.less
-			elif [ -f ./$1.scss ]; then
-				cat $1.scss				
-			elif [ -f ./$1.xml ]; then
-				cat $1.xml						
-			elif [ -f ./.$1 ]; then
-				cat .$1						
+			if [ -f $2 ] ; then
+				eval $1 $2
+			elif [ -f ./$2.js ] ; then
+			    eval $1 $2.js
+			elif [ -f ./$2.json ]; then
+				eval $1 $2.json		
+			elif [ -f ./$2.ejs ]; then
+				eval $1 $2.ejs		
+			elif [ -f ./$2.md ]; then
+				eval $1 $2.md		
+			elif [ -f ./$2.txt ]; then
+				eval $1 $2.txt		
+			elif [ -f ./$2.php ]; then
+				eval $1 $2.php		
+			elif [ -f ./$2.css ]; then
+				eval $1 $2.css		
+			elif [ -f ./$2.html ]; then
+				eval $1 $2.html		
+			elif [ -f ./$2.sh ]; then
+				eval $1 $2.sh	
+			elif [ -f ./$2.haml ]; then
+				eval $1 $2.haml						
+			elif [ -f ./$2.less ]; then
+				eval $1 $2.less
+			elif [ -f ./$2.scss ]; then
+				eval $1 $2.scss				
+			elif [ -f ./$2.xml ]; then
+				eval $1 $2.xml						
+			elif [ -f ./.$2 ]; then
+				eval $1 .$2						
 			else
 				echo "ERROR: File not found!"
 			fi
@@ -116,30 +114,48 @@
 			# NO FILENAME PROVIDED
 			
 			if [ -f README.md ] ; then
-				cat README.md
+				eval $1 README.md
 			elif [ -f package.json ] ; then
-				cat package.json
+				eval $1 package.json
 			elif [ -f index.php ] ; then
-				cat index.php
+				eval $1 index.php
 			elif [ -f index.html ] ; then
-				cat index.html
+				eval $1 index.html
 			elif [ -f index.js ] ; then
-				cat index.js
+				eval $1 index.js
 			elif [ -f index.haml ] ; then
-				cat index.haml
+				eval $1 index.haml
 			elif [ -f readme.txt ] ; then
-				cat readme.txt
+				eval $1 readme.txt
 			elif [ -f config ] ; then
-				cat config
+				eval $1 config
 			elif [ -f post-receive ] ; then
-				cat post-receive
+				eval $1 post-receive
 			fi 
 			
 		fi
+			
+	}
+	
+# ECHO HELPER
+
+	function e() {
+		echo ""	
+		echo -en "\033[1m"
+		
+		smartfile 'cat' $*
 		
 		echo -en "\033[0m"
 		echo ""
 		echo ""
+	}
+	
+# VIM HELPER
+
+	function v() {
+
+		smartfile 'vim' $*
+
 	}
 
 # CREATE BACKUP OF FILE
