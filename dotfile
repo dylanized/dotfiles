@@ -52,8 +52,31 @@
 	# function l() { echo ""; ls -halFG; echo -e "" }
 		
 	function d() {
-		cd $*
-		l
+	
+		patterns=(
+			"$1"
+			".$1"
+			"$1.git"
+			"$1.dev"
+			"$1.new"
+			"$1.prod"
+			"$1.master"
+			"$1.dylan"
+			"$1.tmp"
+			"$1.bak"						
+		)	
+	
+		for folder in ${patterns[@]}
+		do
+			if [ -d $folder ] ; then
+				cd $folder
+				l
+				return
+			fi
+		done
+			
+		echo "ERROR: Folder $1 not found!"
+		
 	}
 	
 	alias ~='d ~'
@@ -117,6 +140,7 @@
 		else
 			list=${defaults[@]}
 		fi
+		# TRY TO ACT ON FILE
 		try_files "${1}" "${list[@]}"		
 		
 	}
