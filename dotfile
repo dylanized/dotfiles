@@ -9,8 +9,9 @@
 # PROMPT
 	source ~/.dotfiles/lib/git-prompt.sh
 	source ~/.dotfiles/lib/git-completion.bash	
-	export PS1='\u@\[\e[0;35m\]$(scutil --get ComputerName):\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
-	# UNIX VERSION: PS1='\u@\[\e[0;35m\]\h:\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
+	PS1='\u@\[\e[0;35m\]\h:\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
+	# MAC VERSION:
+	# export PS1='\u@\[\e[0;35m\]$(scutil --get ComputerName):\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
 	
 # COLORS
 
@@ -41,10 +42,11 @@
 	
 # DIRECTORY HELPERS
 
-	alias l='echo ""; ls -halFG; echo -e "";'
-	
-	# UNIX VERSION: alias l='echo ""; ls -halF --color=auto; echo "";'
+	alias l='echo ""; ls -halF --color=auto; echo "";'	
+	# MAC VERSION:
+	# alias l='echo ""; ls -halFG; echo -e "";'
 
+		
 	function d() {
 		cd $*
 		l
