@@ -75,81 +75,69 @@
 
 	function smartfile() {
 	
-		if [ $2 ] ; then
+		patterns=(
+			"$2"
+			"$2.js"
+			"$2.json"
+			"$2.ejs"
+			"$2.md"
+			"$2.txt"
+			"$2.log"
+			"$2.php"
+			"$2.css"
+			"$2.html"
+			"$2.sh"
+			"$2.haml"
+			"$2.less"
+			"$2.scss"
+			"$2.xml"
+			"$2.sample"
+			".$2"
+		)
 		
-			# FILENAME PROVIDED
-			
-			if [ -f $2 ] ; then
-				eval $1 $2
-			elif [ -f ./$2.js ] ; then
-			    eval $1 $2.js
-			elif [ -f ./$2.json ]; then
-				eval $1 $2.json		
-			elif [ -f ./$2.ejs ]; then
-				eval $1 $2.ejs		
-			elif [ -f ./$2.md ]; then
-				eval $1 $2.md		
-			elif [ -f ./$2.txt ]; then
-				eval $1 $2.txt
-			elif [ -f ./$2.log ]; then
-				eval $1 $2.log			
-			elif [ -f ./$2.php ]; then
-				eval $1 $2.php		
-			elif [ -f ./$2.css ]; then
-				eval $1 $2.css		
-			elif [ -f ./$2.html ]; then
-				eval $1 $2.html		
-			elif [ -f ./$2.sh ]; then
-				eval $1 $2.sh	
-			elif [ -f ./$2.haml ]; then
-				eval $1 $2.haml						
-			elif [ -f ./$2.less ]; then
-				eval $1 $2.less
-			elif [ -f ./$2.scss ]; then
-				eval $1 $2.scss				
-			elif [ -f ./$2.xml ]; then
-				eval $1 $2.xml						
-			elif [ -f ./.$2 ]; then
-				eval $1 .$2						
-			else
-				echo "ERROR: File not found!"
-			fi
-			
+		defaults=(
+			"README.md"
+			"package.json"
+			"index.php"
+			"index.js"
+			"app.js"
+			"index.haml"
+			"readme.txt"
+			"config"
+			"post-receive"
+			".gitconfig"
+			".profile"
+			".bash_profile"
+			".bashrc"
+		)
+		
+		# FIGURE OUT WHICH LIST TO CHECK THROUGH
+		if [ $# -ge 2 ] ; then			
+			list=${patterns[@]}
 		else
-		
-			# NO FILENAME PROVIDED
-			
-			if [ -f README.md ] ; then
-				eval $1 README.md
-			elif [ -f package.json ] ; then
-				eval $1 package.json
-			elif [ -f index.php ] ; then
-				eval $1 index.php
-			elif [ -f index.html ] ; then
-				eval $1 index.html
-			elif [ -f index.js ] ; then
-				eval $1 index.js
-			elif [ -f index.haml ] ; then
-				eval $1 index.haml
-			elif [ -f readme.txt ] ; then
-				eval $1 readme.txt
-			elif [ -f config ] ; then
-				eval $1 config
-			elif [ -f post-receive ] ; then
-				eval $1 post-receive
-			elif [ -f .gitconfig ] ; then
-				eval $1 .gitconfig
-			elif [ -f .profile ] ; then
-				eval $1 .profile
-			elif [ -f .bash_profile ] ; then
-				eval $1 .bash_profile
-			elif [ -f .bashrc ] ; then
-				eval $1 .bashrc
-			fi			
-			
+			list=${defaults[@]}
 		fi
-			
+		try_files "${1}" "${list[@]}"		
+		
 	}
+	
+	function try_files() {
+	
+		action=${1}
+		shift
+		collection=${@}
+		
+		for filename in $collection
+		do
+			if [ -f $filename ] ; then
+				eval $action $filename
+				return
+			fi
+		done
+		
+		echo "ERROR: File not found!"
+					
+	}	
 	
 # ECHO HELPER
 
