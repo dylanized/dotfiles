@@ -53,7 +53,7 @@
 		
 	function d() {
 	
-		patterns=(
+		PATTERNS=(
 			"$1"
 			".$1"
 			"$1.git"
@@ -66,16 +66,16 @@
 			"$1.bak"						
 		)	
 	
-		for folder in ${patterns[@]}
+		for FOLDER in ${PATTERNS[@]}
 		do
-			if [ -d $folder ] ; then
-				cd $folder
+			if [ -d $FOLDER ] ; then
+				cd $FOLDER
 				l
 				return
 			fi
 		done
 			
-		echo "ERROR: Folder $1 not found!"
+		echo "ERROR: $1 not found!"
 		
 	}
 	
@@ -98,7 +98,7 @@
 
 	function smartfile() {
 	
-		patterns=(
+		PATTERNS=(
 			"$2"
 			"$2.js"
 			"$2.json"
@@ -118,7 +118,7 @@
 			".$2"
 		)
 		
-		defaults=(
+		DEFAULTS=(
 			"README.md"
 			"package.json"
 			"index.php"
@@ -135,31 +135,38 @@
 		)
 		
 		# FIGURE OUT WHICH LIST TO CHECK THROUGH
-		if [ $# -ge 2 ] ; then			
-			list=${patterns[@]}
+		if [ $# -ge 2 ] ; then	
+			LIST=${PATTERNS[@]}
+			ORIGINAL="$2"
 		else
-			list=${defaults[@]}
+			LIST=${DEFAULTS[@]}
+			ORIGINAL="File"
 		fi
+		
 		# TRY TO ACT ON FILE
-		try_files "${1}" "${list[@]}"		
+		try_files "$1" "$ORIGINAL" "${LIST[@]}"		
 		
 	}
 	
 	function try_files() {
-	
-		action=${1}
+
+		ACTION=${1}
 		shift
-		collection=${@}
+
+		ORIGINAL=${1}
+		shift
+
+		COLLECTION=${@}
 		
-		for filename in $collection
+		for FILENAME in $COLLECTION
 		do
-			if [ -f $filename ] ; then
-				eval $action $filename
+			if [ -f $FILENAME ] ; then
+				eval $ACTION $FILENAME
 				return
 			fi
 		done
 		
-		echo "ERROR: File not found!"
+		echo "ERROR: $ORIGINAL not found!"
 					
 	}	
 	
