@@ -77,8 +77,8 @@
 	alias greset="git reset"		# unstages commits
 	alias ghard="git reset --hard"	# unstages commits and rolls back working tree
 	
-	alias gitconfig="vim gitconfig"
-	alias gitignore="vim gitignore"
+	alias gitconfig="vim .gitconfig"
+	alias gitignore="vim .gitignore"
 	alias gconfig=gitconfig
 	alias gignore=gitignore
 	
