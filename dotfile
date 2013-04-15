@@ -290,3 +290,13 @@
 		   	source $f
 		fi
 	done
+	
+# DOTFILE SHORTCUTS
+
+	alias dotfile="vim ~/.dotfiles/dotfile"
+	alias gitfile="vim ~/.dotfiles/gitfile"
+	alias nodefile="vim ~/.dotfiles/nodefile"
+
+	alias dfile=dotfile
+	alias gfile=gitfile
+	alias nfile=nodefile
