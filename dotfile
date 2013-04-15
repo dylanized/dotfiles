@@ -201,9 +201,6 @@
 
 	}
 	
-	# fyi, this overrides a unix command
-	alias dd=v
-
 # CREATE BACKUP OF FILE
 
 	function bu() {
