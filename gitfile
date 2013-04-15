@@ -77,6 +77,11 @@
 	alias greset="git reset"		# unstages commits
 	alias ghard="git reset --hard"	# unstages commits and rolls back working tree
 	
+	alias gitconfig="vim gitconfig"
+	alias gitignore="vim gitignore"
+	alias gconfig=gitconfig
+	alias gignore=gitignore
+	
 # GIT FLOW HELPERS
 
 	alias gfs='git flow feature start $1'
