@@ -23,6 +23,7 @@
 	alias x=exit
 	alias t=touch
 	alias cl=clear
+	alias sym='ln -s'
 	
 	alias dotfiles='d ~/.dotfiles'
 	alias dot=dotfiles
@@ -36,7 +37,7 @@
 		mkdir -p "$@" && cd "$@"
 	}
 
-	alias config='vim config'
+	alias config='v config'
 	alias readme='vim README.md'	
 	
 # DIRECTORY HELPERS
@@ -262,6 +263,12 @@
 			du $arg .[^.]* *
 		fi
 	}	
+	
+# BASH HELPER
+
+	function b() {
+		bash $1.sh ${*:2}
+	}
 	
 # MISC STUFF		
 		
