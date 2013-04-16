@@ -106,9 +106,6 @@
 		d /
 	}
 	
-	# MAKE "COMMAND NOT FOUND" REDIRECT TO D HELPER
-	trap 'if ! type -t $BASH_COMMAND >/dev/null; then d $BASH_COMMAND; fi' DEBUG
-	
 # SMARTFILE HELPER
 
 	function smartfile() {
