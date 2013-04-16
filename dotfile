@@ -111,10 +111,7 @@
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-		#WHY DOESN'T THIS WORK?
-		#type d &>/dev/null && echo "d() found." || echo "d() not found."
-		#d $@
-		type d &>/dev/null && d
+		d $@
 	}	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
