@@ -108,8 +108,9 @@
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-	  #d $@
-	  echo "hello"
+	  if [ type d ]; then
+	  	d $@
+	  fi
 	}	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
