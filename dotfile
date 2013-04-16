@@ -106,9 +106,9 @@
 		d /
 	}
 
-	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU
+	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-	  d $@
+	  #d $@
 	}	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
