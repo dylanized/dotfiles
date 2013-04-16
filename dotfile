@@ -111,7 +111,7 @@
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-		command -v d >/dev/null && echo "d Found In \$PATH" || echo "d Not Found in \$PATH"
+		command -v d >/dev/null && echo "d $@"
 		#d $@		
 	}	
 		
