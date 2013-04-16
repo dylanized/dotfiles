@@ -183,11 +183,12 @@
 		do
 			if [ -f $FILENAME ] ; then
 				eval $ACTION $FILENAME
-				return
+				return 1
 			fi
 		done
-		
+				
 		echo "ERROR: $ORIGINAL not found!"
+		return 0
 					
 	}	
 	
@@ -199,8 +200,13 @@
 		
 		smartfile 'cat' $*
 		
+		status=$?
+		
+	    if [ $status -gt 0 ]; then
+	        echo ""
+	    fi
+		
 		echo -en "\033[0m"
-		echo ""
 		echo ""
 	}
 	
