@@ -108,9 +108,7 @@
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-	  if [ type d ]; then
-	  	d $@
-	  fi
+		type d | grep -q 'd $@'
 	}	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
