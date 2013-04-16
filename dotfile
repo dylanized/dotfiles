@@ -106,13 +106,10 @@
 		d /
 	}
 	
-	# ISFUNCTION HELPER FUNC
-	isFunction() { [[ "$(declare -Ff "$1")" ]]; }	
-
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-		command -v d >/dev/null && echo $@
-		#d $@		
+		#command -v d >/dev/null && echo $@
+		d $@		
 	}	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
@@ -304,13 +301,13 @@
 	# Trim new lines and copy to clipboard
 	alias clip="tr -d '\n' | pbcopy"
 
-# INCLUDE OTHER DOTFILES
+# AUTOMATICALLY INCLUDE OTHER DOTFILES
 
-	for f in ~/.dotfiles/*; do
-		if [ -f $f ] && [[ ! $f =~ "/dotfile" ]] && [[ ! $f =~ "README" ]]; then
-		   	source $f
-		fi
-	done
+	# for f in ~/.dotfiles/*; do
+	# 	if [ -f $f ] && [[ ! $f =~ "/dotfile" ]] && [[ ! $f =~ "README" ]]; then
+	# 	   	source $f
+	# 	fi
+	# done
 	
 # DOTFILE SHORTCUTS
 
