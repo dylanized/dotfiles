@@ -5,6 +5,7 @@
 	alias ni="npm install"
 	alias nv="node --version"	
 	alias g=grunt
+	alias nm='d node_modules'
 	
 	function n() {
 		if [ $1 ] ; then

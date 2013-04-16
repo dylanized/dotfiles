@@ -46,6 +46,8 @@
 		git push "$*"
 	}
 	
+	alias gpo='git push origin'
+	
 	alias push='git push'
 	alias pull='git pull'
 	

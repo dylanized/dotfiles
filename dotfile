@@ -24,14 +24,15 @@
 	alias t=touch
 	alias cl=clear
 	alias sym='ln -s'
-	
+	alias his=history
+		
 	alias dotfiles='d ~/.dotfiles'
 	alias dot=dotfiles
 	alias profile='vim ~/.bash_profile'	
 	alias pro=profile
 	alias reload='source ~/.bash_profile'
 	alias re=reload
-	
+		
 	# MAKE FOLDER AND ENTER IT
 	function m() {
 		mkdir -p "$@" && cd "$@"
@@ -104,6 +105,9 @@
 	function cd/() {
 		d /
 	}
+	
+	# MAKE "COMMAND NOT FOUND" REDIRECT TO D HELPER
+	trap 'if ! type -t $BASH_COMMAND >/dev/null; then d $BASH_COMMAND; fi' DEBUG
 	
 # SMARTFILE HELPER
 
