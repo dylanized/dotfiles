@@ -107,9 +107,9 @@
 	}
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
-	function command_not_found_handle {
-	  #d $@
-	}	
+	/*function command_not_found_handle {
+	  d $@
+	}*/	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
 	# trap 'if ! type -t $BASH_COMMAND >/dev/null; then d $BASH_COMMAND; fi' DEBUG
