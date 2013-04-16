@@ -111,7 +111,7 @@
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-		command -v d >/dev/null && echo "d $@"
+		command -v d >/dev/null && echo 'hello world'
 		#d $@		
 	}	
 		
