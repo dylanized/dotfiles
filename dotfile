@@ -200,8 +200,8 @@
 		
 		smartfile 'cat' $*
 		
-		status=$?
-		
+		# IF SUCCESSFUL, PRINT EXTRA LINE BREAK
+		status=$?		
 	    if [ $status -gt 0 ]; then
 	        echo ""
 	    fi
