@@ -106,23 +106,16 @@
 		d /
 	}
 	
-	# IS_EXECUTABLE HELPER FUNC
-	function is_executable() {
-	    typeset TYPE_RESULT="`type -t $1`"
-	
-	    if [ "$TYPE_RESULT" == 'function' ]; then
-	        return 0
-	    else
-	        return 1
-	    fi
-	}	
+	# ISFUNCTION HELPER FUNC
+	isFunction() { [[ "$(declare -Ff "$1")" ]]; }	
 
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
-		if [ is_executable(d) ]; then
+		isFunction d && echo yes || echo no
+		#if [ is_executable(d) ]; then
 			# type d | grep -q 'd $@';
-			d $@
-		fi
+		#	d $@
+		#fi
 	}	
 		
 	# OVERRIDE COMMAND-NOT-FOUND ON MAC
