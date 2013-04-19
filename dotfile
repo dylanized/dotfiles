@@ -293,7 +293,7 @@
 	# List only directories
 	alias lsd='ls -l ${colorflag} | grep "^d"'
 	
-	# Enable aliases to be sudo’ed
+	# Enable aliases to be sudo'ed
 	alias sudo='sudo '
 	
 	# Flush Cache
