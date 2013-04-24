@@ -66,7 +66,9 @@
 	alias gr='git remote'
 	alias gf='git fetch'
 	alias grm='git rm'
-	
+	alias gra='git remote add'
+	alias grao='git remote add origin'
+		
 	function gi() {
 		git init
 		git add *
