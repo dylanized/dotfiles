@@ -49,6 +49,12 @@
 		ls -halF --color=auto;
 		echo "";
 	}
+
+	function lr() {
+		echo "";
+		ls -RhalG $1;
+		echo "";
+	}
 	
 	# MAC VERSION:
 	# function l() { echo ""; ls -halFG; echo -e "" }
