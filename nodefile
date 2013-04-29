@@ -9,7 +9,15 @@
 	alias snl='sudo npm link'	
 
 	function n() {
-		if [ $1 ] ; then
+		echo ""	
+		echo -en "\033[1m"
+		
+		if [[ $1 = "debug" || $1 = "--debug" ]]; then
+			# RUN APP.JS IN DEBUG MODE
+			FILENAME="app.js --debug"
+			echo "** DEBUG MODE **"
+			echo ""
+		elif [ $1 ] ; then
 			# ARGUMENT(S) GIVEN	
 			if [[ "$1" != *.js* ]] ; then
 				FILENAME="$1.js"
@@ -22,15 +30,14 @@
 			FILENAME="app.js"
 		fi
 		
-		echo ""	
-		echo -en "\033[1m"
-		
 		node $FILENAME ${@}
 		
 		echo -en "\033[0m"
 		echo ""		
 		
-	}	
+	}
+	
+	alias nd="n --debug"
 	
 	function nu() {
 		COMMAND="nvm use v"
