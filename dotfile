@@ -39,6 +39,8 @@
 		mkdir -p "$@" && cd "$@"
 	}
 
+	alias mk='mkdir -p'
+
 	alias config='v config'
 	alias readme='vim README.md'	
 	
@@ -102,9 +104,9 @@
 
 	alias ..='d ..'
 	alias cd..='d ..'
-	alias ...='d ../../../'
-	alias ....='d ../../../../'
-	alias .....='d ../../../../'
+	alias ...='d ../../'
+	alias ....='d ../../../'
+	alias .....='d ../../../'
 	alias .4='d ../../../../'
 	alias .5='d ../../../../..'
 	alias ,='d /'
@@ -143,6 +145,10 @@
 			"$2.scss"
 			"$2.xml"
 			"$2.sample"
+			"$2.mf"
+			"$2.css.mf"
+			"$2.js.mf"
+			"$2.html.mf"			
 			".$2"
 		)
 		

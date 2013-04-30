@@ -6,7 +6,9 @@
 	alias nv="node --version"	
 	alias g=grunt
 	alias nm='d node_modules'
-	alias snl='sudo npm link'	
+	alias snl='sudo npm link'
+	alias smash=asset-smasher
+	alias sm=smash
 
 	function n() {
 		echo ""	
