@@ -80,7 +80,10 @@
 			"$1.co"						
 			"$1.me"						
 			"$1.is"
-			"$1.info"			
+			"$1.info"
+			"$2.css.mf"
+			"$2.js.mf"
+			"$2.html.mf"			
 		)
 	
 		if [ $# -ge 1 ] ; then
@@ -148,7 +151,7 @@
 			"$2.mf"
 			"$2.css.mf"
 			"$2.js.mf"
-			"$2.html.mf"			
+			"$2.html.mf"					
 			".$2"
 		)
 		
