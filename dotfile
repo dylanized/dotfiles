@@ -48,7 +48,7 @@
 
 	function l() {
 		echo "";
-		ls -halF --color=auto;
+		ls -halF --color=auto $1;
 		echo "";
 	}
 
@@ -81,9 +81,9 @@
 			"$1.me"						
 			"$1.is"
 			"$1.info"
-			"$2.css.mf"
-			"$2.js.mf"
-			"$2.html.mf"			
+			"$1.css.mf"
+			"$1.js.mf"
+			"$1.html.mf"			
 		)
 	
 		if [ $# -ge 1 ] ; then
