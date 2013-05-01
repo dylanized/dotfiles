@@ -2,17 +2,21 @@
 
 	alias s=sails
 	alias sl="sails lift"
-	alias ni="npm install"
-	alias nv="node --version"	
+	alias ni="npm install --save"
+	alias ng="sudo npm install -g"
+	alias nv="node --version"
+	alias nu="npm update"	
 	alias g=grunt
-	alias nm='d node_modules'
 	alias snl='sudo npm link'
 	alias smash=asset-smasher
 	alias sm=smash
+	alias nm='d node_modules'
 
 	function n() {
 		echo ""	
 		echo -en "\033[1m"
+		
+		FILENAME=""
 		
 		if [[ $1 = "debug" || $1 = "--debug" ]]; then
 			# RUN APP.JS IN DEBUG MODE
@@ -23,17 +27,29 @@
 			# ARGUMENT(S) GIVEN	
 			if [[ "$1" != *.js* ]] ; then
 				FILENAME="$1.js"
+			elif [[ "$1" == *--* ]] ; then
+				FILENAME="app.js $1"
 			else
 				FILENAME=$1
 			fi
 			shift
-		else
+		elif [ -f app.js ]; then
 			# NO ARGUMENTS, RUN APP.JS
 			FILENAME="app.js"
+		elif [ -f index.js ]; then
+			# NO ARGUMENTS, RUN INDEX.JS
+			FILENAME="index.js"
+		elif [ -f scraper.js ]; then
+			# NO ARGUMENTS, RUN SCRAPER.JS
+			FILENAME="scraper.js"
 		fi
 		
-		node $FILENAME ${@}
-		
+		if [[ $FILENAME ]]; then
+			node $FILENAME ${@}
+		else
+			echo "ERROR: script not found"
+		fi
+				
 		echo -en "\033[0m"
 		echo ""		
 		
@@ -41,7 +57,7 @@
 	
 	alias nd="n --debug"
 	
-	function nu() {
+	function nvu() {
 		COMMAND="nvm use v"
 		COMMANDVER=$COMMAND$1
 		$COMMANDVER
