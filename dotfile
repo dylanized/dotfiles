@@ -85,7 +85,18 @@
 			"$1.js.mf"
 			"$1.html.mf"			
 		)
-	
+		
+		# SEARCH FOR PARTIAL MATCH
+		MATCH=$(find . -name "*$1*" -type d -maxdepth 1 -print | head -n1)
+		
+		if [ $MATCH ]; then
+		 	cd $MATCH
+		 	l
+		 	return
+		fi
+				
+		# LOOP THROGH PATTERNS
+			
 		if [ $# -ge 1 ] ; then
 		
 			for FOLDER in ${PATTERNS[@]}
@@ -97,8 +108,9 @@
 				fi
 			done
 		
-		fi
-			
+		fi		
+		
+		# FALLBACK TO E	
 		e $1
 		
 	}
@@ -333,10 +345,14 @@
 	
 # DOTFILE SHORTCUTS
 
-	alias dotfile="vim ~/.dotfiles/dotfile"
-	alias gitfile="vim ~/.dotfiles/gitfile"
-	alias nodefile="vim ~/.dotfiles/nodefile"
+	DOTROOT=~/.dotfiles
+
+	alias dotfile="vim $DOTROOT/dotfile"
+	alias gitfile="vim $DOTROOT/gitfile"
+	alias nodefile="vim $DOTROOT/nodefile"
+	alias macfile="vim $DOTROOT/macfile"	
 
 	alias dfile=dotfile
 	alias gfile=gitfile
 	alias nfile=nodefile
+	alias mfile=macfile

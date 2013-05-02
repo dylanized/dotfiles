@@ -1,0 +1,9 @@
+# SET UP SHELL
+export PS1='\u@\[\e[0;35m\]$(scutil --get ComputerName):\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
+	
+# FIX COLORS IN L HELPER	
+function l() { echo ""; ls -halFG $1; echo ""; }
+	
+# MAKE "COMMAND NOT FOUND" REDIRECT TO D HELPER
+trap 'if ! type -t $BASH_COMMAND >/dev/null; then d $BASH_COMMAND; fi' DEBUG
+	
