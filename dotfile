@@ -5,8 +5,6 @@
 	source ~/.dotfiles/lib/git-prompt.sh
 	source ~/.dotfiles/lib/git-completion.bash
 	PS1='\u@\[\e[0;35m\]\h:\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
-	# MAC VERSION:
-	# export PS1='\u@\[\e[0;35m\]$(scutil --get ComputerName):\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'	
 	
 # COLORS
 
@@ -58,9 +56,6 @@
 		echo "";
 	}
 	
-	# MAC VERSION:
-	# function l() { echo ""; ls -halFG; echo -e "" }
-		
 	function d() {
 	
 		PATTERNS=(
@@ -95,7 +90,7 @@
 		 	return
 		fi
 				
-		# LOOP THROGH PATTERNS
+		# LOOP THROUGH PATTERNS
 			
 		if [ $# -ge 1 ] ; then
 		
@@ -134,10 +129,6 @@
 	function command_not_found_handle {
 		d $@		
 	}	
-		
-	# OVERRIDE COMMAND-NOT-FOUND ON MAC
-	# trap 'if ! type -t $BASH_COMMAND >/dev/null; then d $BASH_COMMAND; fi' DEBUG
-	
 	
 # SMARTFILE HELPER
 
