@@ -175,10 +175,20 @@
 			".bashrc"
 		)
 		
-		# FIGURE OUT WHICH LIST TO CHECK THROUGH
-		if [ $# -ge 2 ] ; then	
+		# IF THERE'S AN ARG
+		if [ $# -ge 2 ] ; then
+		
+			# SEARCH FOR PARTIAL MATCH
+			MATCH=$(find . -name "*$2*" -maxdepth 1 -print | head -n1)
+			
+			if [ $MATCH ]; then
+			 	w $MATCH
+			 	return
+			fi		
+					
 			LIST=${PATTERNS[@]}
 			ORIGINAL="$2"
+		# ELSE CHECK FOR A DEFAULT
 		else
 			LIST=${DEFAULTS[@]}
 			ORIGINAL="File"
