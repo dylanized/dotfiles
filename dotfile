@@ -82,7 +82,7 @@
 		)
 		
 		# SEARCH FOR PARTIAL MATCH
-		MATCH=$(find . -name "*$1*" -type d -maxdepth 1 -print | head -n1)
+		MATCH=$(find . -iname "*$1*" -type d -maxdepth 1 -print | head -n1)
 		
 		if [ $MATCH ]; then
 		 	cd $MATCH
@@ -179,10 +179,10 @@
 		if [ $# -ge 2 ] ; then
 		
 			# SEARCH FOR PARTIAL MATCH
-			MATCH=$(find . -name "*$2*" -maxdepth 1 -print | head -n1)
+			MATCH=$(find . -iname "*$2*" -maxdepth 1 -print | head -n1)
 			
 			if [ $MATCH ]; then
-			 	w $MATCH
+			 	$1 $MATCH
 			 	return
 			fi		
 					
