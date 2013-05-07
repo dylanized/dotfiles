@@ -237,6 +237,14 @@
 		smartfile 'vim' $*
 
 	}
+
+# EDITOR HELPER
+
+	function e() {
+
+		smartfile 'coda' $*
+
+	}
 	
 # CREATE BACKUP OF FILE
 
