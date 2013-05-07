@@ -105,8 +105,8 @@
 		
 		fi		
 		
-		# FALLBACK TO E	
-		e $1
+		# FALLBACK TO W	
+		w $1
 		
 	}
 	
@@ -212,9 +212,9 @@
 					
 	}	
 	
-# ECHO HELPER
+# WRITE HELPER
 
-	function e() {
+	function w() {
 		echo ""	
 		echo -en "\033[1m"
 		

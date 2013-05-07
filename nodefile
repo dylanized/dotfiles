@@ -11,6 +11,7 @@
 	alias smash=asset-smasher
 	alias sm=smash
 	alias nm='d node_modules'
+	alias np='npm publish ./'
 
 	function n() {
 		echo ""	
