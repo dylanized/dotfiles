@@ -154,7 +154,8 @@
 			"$2.mf"
 			"$2.css.mf"
 			"$2.js.mf"
-			"$2.html.mf"					
+			"$2.html.mf"
+			"$2.out"					
 			".$2"
 		)
 		
