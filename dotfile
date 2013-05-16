@@ -84,11 +84,12 @@
 		# SEARCH FOR PARTIAL MATCH
 		MATCH=$(find . -maxdepth 1 -type d -print -iname "*$1*" | head -n1)
 		
-		if [ $MATCH ]; then
-		 	cd $MATCH
-		 	l
-		 	return
-		fi
+		#if [ $MATCH ]; then
+			#echo $MATCH
+		 	#cd $MATCH
+		 	#l
+		 	#return
+		#fi
 				
 		# LOOP THROUGH PATTERNS
 			
