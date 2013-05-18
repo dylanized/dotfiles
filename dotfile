@@ -4,7 +4,7 @@
 
 	source ~/.dotfiles/lib/git-prompt.sh
 	source ~/.dotfiles/lib/git-completion.bash
-	PS1='\u@\[\e[0;35m\]\h:\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$'
+	PS1='\u@\[\e[0;35m\]\h:\[\e[0;36m\]\w\[\e[0;32m\]$(__git_ps1 " [%s]")\[\e[m\]$ '
 	
 # COLORS
 
@@ -82,14 +82,16 @@
 		)
 		
 		# SEARCH FOR PARTIAL MATCH
-		MATCH=$(find . -maxdepth 1 -type d -print -iname "*$1*" | head -n1)
+		#MATCH=$(find . -maxdepth 1 -type d -print -iname "*$1*" | head -n1)
+		MATCH=$(find . -iname "*$1*" -type d -maxdepth 1 -print | head -n1)		
 		
-		#if [ $MATCH ]; then
-			#echo $MATCH
-		 	#cd $MATCH
-		 	#l
-		 	#return
-		#fi
+		echo "MATCH = $MATCH"
+		
+		if [ $MATCH ]; then
+		 	cd $MATCH
+		 	l
+		 	return
+		fi	
 				
 		# LOOP THROUGH PATTERNS
 			
