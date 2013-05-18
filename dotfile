@@ -83,7 +83,7 @@
 		
 		# SEARCH FOR PARTIAL MATCH
 		#MATCH=$(find . -maxdepth 1 -type d -print -iname "*$1*" | head -n1)
-		MATCH=$(find .  -type d -maxdepth 1 -iname "*$1*" -print | head -n1)		
+		MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
 		
 		echo "MATCH = $MATCH"
 		
