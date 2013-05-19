@@ -180,7 +180,7 @@
 		if [ $# -ge 2 ] ; then
 		
 			# SEARCH FOR PARTIAL MATCH
-			MATCH=$(find . -iname "*$2*" -maxdepth 1 -print | head -n1)
+			MATCH=$(find . -maxdepth 1 -iname "*$2*" -print | head -n1)
 			
 			if [ $MATCH ]; then
 			 	$1 $MATCH
