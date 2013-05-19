@@ -5,41 +5,61 @@
 	
 	# QUICK ADD
 	function ga() {
+		echo "$COLOR_YELLOW"		
 		git add $*
+		echo "$COLOR_RESET"			
 	}
 
 	# ADD ALL CHANGED AND NEW FILES
 	function gaa() {
+		echo "$COLOR_YELLOW"	
 		git add -A
+		echo "$COLOR_RESET"
 	}
 	
 	# QUICK COMMIT
 	function gc() {
+		echo "$COLOR_GREEN"	
+		echo ""
 		git commit -m "$*"	
+		echo ""
+		echo "$COLOR_GREEN"		
 	}
 	
 	# ADD TRACKED CHANGES, THEN COMMIT
 	function gac() {
+		echo "$COLOR_GREEN"	
+		echo ""
 		git commit -am "$*"
+		""
+		echo "$COLOR_RESET"		
 	}
 	
 	# ADD TRACKED CHANGES, COMMIT, THEN PUSH
 	function gacp() {
+		echo "$COLOR_GREEN"
 		git commit -am "$*"	
 		git push
+		echo "$COLOR_RESET"
 	}
 	
 	# ADD ALL CHANGES, THEN COMMIT	
 	function c() {
+		echo "$COLOR_GREEN"	
 		git add -A
 		git commit -m "$*"
+		echo "$COLOR_RESET"
 	}	
 
 	#  ADD ALL CHANGES, COMMIT, THEN PUSH	
 	function p() {
+		echo "$COLOR_GREEN"	
+		echo ""
 		git add -A
 		git commit -m "$*"
 		git push
+		echo ""
+		echo "$COLOR_RESET"		
 	}
 		
 	alias gp='git push'
@@ -50,9 +70,11 @@
 	alias pull='git pull'
 	
 	function gpa() {
+		echo "$COLOR_GREEN"
 		git add -A
 		git commit -m "$*"
 		git push all master	
+		echo "$COLOR_RESET"
 	}
 	
 	alias gd='git diff'		
@@ -68,9 +90,11 @@
 	alias grao='git remote add origin'
 		
 	function gi() {
+		echo ""
 		git init
 		git add *
 		git commit -m "initial commit"
+		echo ""
 	}
 	
 	alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
@@ -93,19 +117,22 @@
 # EXPORT GIT TO TEMP FOLDER
 	
 	function gx() {
-	   GXFOLDER=temp
-       if [ $1 ]; then
+		echo ""
+	   	GXFOLDER=temp
+       	if [ $1 ]; then
             GXFOLDER=$1
         fi	
 		rm -rf $GXFOLDER
 		mkdir $GXFOLDER
 		git archive --format=tar master | (cd $GXFOLDER/ && tar -xf -)
+		echo ""
 	}
 
 # EXPORT GIT AND UPLOAD TO FTP FOLDER
 # pass in ssh server + folder path
 	
 	function gxp() {
+		echo ""
 		if [ $# -gt 0  ]; then
 			GXPFOLDER=temp
 			gx
@@ -115,12 +142,15 @@
 			echo "ERROR: Missing SSH server or folder path!"
 			echo "Ex: gxp yourserver.com somefolder/subfolder"
 		fi
+		echo ""
 	}
 	
 # CREATE BARE REPO
 # First argument is repo name, second argument is path to working tree
 
 	function bare() {
+		
+		echo ""
 	
 		if [ $# = 2 ]; then
 		
@@ -154,5 +184,7 @@ EOF
 			echo "EX: bare sample_repo ../../sample_repo.dev"
 			
 		fi
+		
+		echo ""
 		
 	}	
