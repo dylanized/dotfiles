@@ -17,7 +17,7 @@
 	function gc() {
 		echo "\e[1;32m"
 		git commit -m "$*"
-		echo "\e[1;0m"
+		echo "\e[1;0m" 
 	}
 	
 	# ADD TRACKED CHANGES, THEN COMMIT
