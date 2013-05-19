@@ -82,7 +82,7 @@
 		)
 		
 		# SEARCH FOR PARTIAL MATCH
-		MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
+		MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print -nowarn | head -n1)		
 		
 		if [ $MATCH ]; then
 		 	cd $MATCH
