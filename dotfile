@@ -105,8 +105,8 @@
 		
 		fi		
 		
-		# FALLBACK TO W	
-		w $1
+		# FALLBACK TO E	
+		e $1
 		
 	}
 	
@@ -223,9 +223,9 @@
 					
 	}	
 	
-# WRITE HELPER
+# ECHO HELPER
 
-	function w() {
+	function e() {
 		echo ""	
 		echo -en "\033[1m"
 		
@@ -247,9 +247,9 @@
 		smartfile 'vim' $*
 	}
 
-# EDITOR HELPER
+# EDITOR HELPER. WHY IS IT W? I HAVE NO IDEA
 
-	function e() {
+	function w() {
 		smartfile 'coda' $*
 	}
 	
