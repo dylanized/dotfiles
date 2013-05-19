@@ -38,7 +38,7 @@
 	export GITPROMPT="\$(__git_ps1 ' ${COLOR_YELLOW}[%s]')"	
 	
 	#PS1='\e[0;31m\]\u\e[0;37m\]@\[\e[0;31m\]\h \[\e[0;34m\]\w\[\e[0;33m\]$(__git_ps1 " [%s]")\[\e[m\] '
-	#PS1="${COLOR_RED}\u${COLOR_WHITE}@${COLOR_RED}${COMPUTERNAME} ${COLOR_BLUE}\w ${COLOR_YELLOW}${GITPROMPT} ${COLOR_RESET}"
+	#PS1="${COLOR_RED}\u${COLOR_WHITE}@${COLOR_RED}${COMPUTERNAME} ${COLOR_BLUE}\w ${COLOR_BROWN}${GITPROMPT} ${COLOR_RESET}"
 	
 	#PS1="${COLOR_RED}\u${COLOR_WHITE}@${COLOR_RED}${COMPUTERNAME} ${COLOR_BLUE}\w${GITPROMPT} ${COLOR_RESET}"	
 	PS1="${TITLEBAR}${COLOR_RED}\u${COLOR_WHITE}@${COLOR_RED}${COMPUTERNAME} ${COLOR_BLUE}\w${GITPROMPT} ${COLOR_RESET}"
@@ -110,6 +110,14 @@
 			"$1.html.mf"			
 		)
 		
+		# IF THERE IS AN EXACT MATCH
+		if [ -d $FOLDER ] ; then
+			cd $FOLDER
+			l
+			return
+		fi								
+		
+		# IF THERE IS NO SLASH
 		if [[ "$1" != *"/"* ]]; then
 
 			# SEARCH FOR PARTIAL MATCH
@@ -120,9 +128,14 @@
 			 	l
 			 	return
 			fi
-			
-		fi			
-				
+		
+		# ELSE IF THERE IS A SLASH
+		else
+			cd $FOLDER
+			l
+			return		
+		fi
+		
 		# LOOP THROUGH PATTERNS
 			
 		if [ $# -ge 1 ] ; then
