@@ -15,9 +15,9 @@
 	
 	# QUICK COMMIT
 	function gc() {
-		echo $COLOR_GREEN
+		echo "\e[1;32m"
 		git commit -m "$*"
-		echo $COLOR_RESET
+		echo "\e[1;0m"
 	}
 	
 	# ADD TRACKED CHANGES, THEN COMMIT
