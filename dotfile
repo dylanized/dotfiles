@@ -40,19 +40,17 @@
 	function __git_color() {
 		git_status="`git status -unormal 2>&1`"
 	    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+	    	# IF REPO IS CAUGHT UP
 	        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
 	            # echo $COLOR_GREEN
 	            echo 32
 	        #elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-	        #	# echo $COLOR_YELLOW
-	        #    echo 33
-	        elif [[ "$git_status" =~ 'A ' ]]; then
-	        	# echo $COLOR_PURPLE
-	            echo 35	        	
+	        # ELSE IF REPO HAS CHANGED
 	        else
 	        	# echo $COLOR_YELLOW
 	            echo 33
 	        fi
+	        # TODO - CHECK IF ORIGIN HAS BEEN UPDATED
 	    fi
 	}
 
