@@ -81,14 +81,18 @@
 			"$1.html.mf"			
 		)
 		
-		# SEARCH FOR PARTIAL MATCH
-		MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print -nowarn | head -n1)		
-		
-		if [ $MATCH ]; then
-		 	cd $MATCH
-		 	l
-		 	return
-		fi	
+		if [[ "$1" != *"/"* ]]; then
+
+			# SEARCH FOR PARTIAL MATCH
+			MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
+			
+			if [ $MATCH ]; then
+			 	cd $MATCH
+			 	l
+			 	return
+			fi
+			
+		fi			
 				
 		# LOOP THROUGH PATTERNS
 			
@@ -178,17 +182,23 @@
 		
 		# IF THERE'S AN ARG
 		if [ $# -ge 2 ] ; then
+	
+			# IF ARG DOESN'T CONTAIN SLASH	
+			if [[ "$1" != *"/"* ]]; then
 		
-			# SEARCH FOR PARTIAL MATCH
-			MATCH=$(find . -maxdepth 1 -iname "*$2*" -print -nowarn | head -n1)
+				# SEARCH FOR PARTIAL MATCH
+				MATCH=$(find . -maxdepth 1 -iname "*$2*" -print | head -n1)
+				
+				if [ $MATCH ]; then
+				 	$1 $MATCH
+				 	return
+				fi
 			
-			if [ $MATCH ]; then
-			 	$1 $MATCH
-			 	return
-			fi		
+			fi
 					
 			LIST=${PATTERNS[@]}
 			ORIGINAL="$2"
+			
 		# ELSE CHECK FOR A DEFAULT
 		else
 			LIST=${DEFAULTS[@]}
