@@ -15,9 +15,9 @@
 	
 	# QUICK COMMIT
 	function gc() {
-		echo "\e[1;32m"
+		echo -e "\033[1m"
 		git commit -m "$*"
-		echo "\e[1;0m" 
+		echo -e "\0[1m" 
 	}
 	
 	# ADD TRACKED CHANGES, THEN COMMIT
