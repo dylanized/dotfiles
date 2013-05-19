@@ -15,7 +15,7 @@
 	
 	# QUICK COMMIT
 	function gc() {
-		echo "\033[1m"
+		echo -e "\033[1m"
 		git commit -m "$*"
 		echo -e "" 
 	}
