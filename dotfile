@@ -53,7 +53,7 @@
 	        # TODO - CHECK IF ORIGIN HAS BEEN UPDATED
 	    fi
 	}
-
+	
 	export GITCOLOR="\[\e[1;\$(__git_color)m\]"	
 	export GITPROMPT="${GITCOLOR}\$(__git_ps1 ' [%s]')${COLOR_RESET}"	
 	
