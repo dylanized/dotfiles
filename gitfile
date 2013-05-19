@@ -78,12 +78,14 @@
 	alias gra='git remote add'
 	alias grao='git remote add origin'
 	
+	# GIT STATUS
 	function gs() {
 		echo -e "\033[1m"
-		alias gs='git status -sb'	
+		git status -sb
 		echo -e ""
 	}
 		
+	# INITIALIZE NEW REPO
 	function gi() {
 		echo -e "\033[1m"
 		git init
@@ -98,14 +100,26 @@
 		echo -e ""
 	}
 	
+	## RESET WORKING COPY TO HEAD, DELETE ALL CHANGES
 	function ghard() {
 		echo -e "\033[1m"
 		git reset --hard
 		echo -e ""	
 	}
 	
-	alias undo="git revert HEAD"
-	alias greset="git reset"		# unstages commits
+	# ??
+	function undo() {
+		echo -e "\033[1m"
+		git revert HEAD
+		echo -e ""		
+	}
+
+	# UNSTAGE COMMITS
+	function greset() {
+		echo -e "\033[1m"
+		git reset
+		echo -e ""		
+	}
 	
 	alias gitconfig="vim .gitconfig"
 	alias gitignore="vim .gitignore"
