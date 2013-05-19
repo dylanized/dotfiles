@@ -22,38 +22,34 @@
 	
 	# ADD TRACKED CHANGES, THEN COMMIT
 	function gac() {
-		echo "$COLOR_GREEN"	
-		echo ""
+		echo -e "\033[1m"
 		git commit -am "$*"
-		""
-		echo "$COLOR_RESET"		
+		echo -e ""
 	}
 	
 	# ADD TRACKED CHANGES, COMMIT, THEN PUSH
 	function gacp() {
-		echo "$COLOR_GREEN"
+		echo -e "\033[1m"
 		git commit -am "$*"	
 		git push
-		echo "$COLOR_RESET"
+		echo -e ""
 	}
 	
 	# ADD ALL CHANGES, THEN COMMIT	
 	function c() {
-		echo "$COLOR_GREEN"	
+		echo -e "\033[1m"
 		git add -A
 		git commit -m "$*"
-		echo "$COLOR_RESET"
+		echo -e ""
 	}	
 
 	#  ADD ALL CHANGES, COMMIT, THEN PUSH	
 	function p() {
-		echo "$COLOR_GREEN"	
-		echo ""
+		echo -e "\033[1m"
 		git add -A
 		git commit -m "$*"
 		git push
-		echo ""
-		echo "$COLOR_RESET"		
+		echo -e ""
 	}
 		
 	alias gp='git push'
@@ -64,11 +60,11 @@
 	alias pull='git pull'
 	
 	function gpa() {
-		echo "$COLOR_GREEN"
+		echo -e "\033[1m"
 		git add -A
 		git commit -m "$*"
 		git push all master	
-		echo "$COLOR_RESET"
+		echo -e ""
 	}
 	
 	alias gd='git diff'		
@@ -84,11 +80,11 @@
 	alias grao='git remote add origin'
 		
 	function gi() {
-		echo ""
+		echo -e "\033[1m"
 		git init
 		git add *
 		git commit -m "initial commit"
-		echo ""
+		echo -e ""
 	}
 	
 	alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
@@ -111,7 +107,7 @@
 # EXPORT GIT TO TEMP FOLDER
 	
 	function gx() {
-		echo ""
+		echo -e "\033[1m"
 	   	GXFOLDER=temp
        	if [ $1 ]; then
             GXFOLDER=$1
@@ -119,14 +115,14 @@
 		rm -rf $GXFOLDER
 		mkdir $GXFOLDER
 		git archive --format=tar master | (cd $GXFOLDER/ && tar -xf -)
-		echo ""
+		echo -e ""
 	}
 
 # EXPORT GIT AND UPLOAD TO FTP FOLDER
 # pass in ssh server + folder path
 	
 	function gxp() {
-		echo ""
+		echo -e "\033[1m"
 		if [ $# -gt 0  ]; then
 			GXPFOLDER=temp
 			gx
@@ -136,7 +132,7 @@
 			echo "ERROR: Missing SSH server or folder path!"
 			echo "Ex: gxp yourserver.com somefolder/subfolder"
 		fi
-		echo ""
+		echo -e ""
 	}
 	
 # CREATE BARE REPO
@@ -144,7 +140,7 @@
 
 	function bare() {
 		
-		echo ""
+		echo -e "\033[1m"
 	
 		if [ $# = 2 ]; then
 		
@@ -179,6 +175,6 @@ EOF
 			
 		fi
 		
-		echo ""
+		echo -e ""
 		
 	}	
