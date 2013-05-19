@@ -63,7 +63,10 @@
 		
 	# MAKE FOLDER AND ENTER IT
 	function m() {
+		echo ""
+		echo "Creating $@ folder..."
 		mkdir -p "$@" && cd "$@"
+		l
 	}
 
 	alias mk='mkdir -p'
@@ -86,9 +89,36 @@
 	}
 	
 	function d() {
+				
+		# IF THERE IS AN EXACT MATCH
+		if [ -d $1 ] ; then
+			cd $1
+			l
+			return
+		fi								
+		
+		# IF THERE IS NO SLASH
+		if [[ "$1" != *"/"* ]]; then
+
+			# SEARCH FOR PARTIAL MATCH
+			MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
+			
+			if [ $MATCH ]; then
+			 	cd $MATCH
+			 	l
+			 	return
+			fi
+		
+		# ELSE IF THERE IS A SLASH
+		else
+			cd $1
+			l
+			return		
+		fi
+		
+		# COMMON FOLDER NAME PATTERNS
 	
 		PATTERNS=(
-			"$1"
 			".$1"
 			"$1.git"
 			"$1.dev"
@@ -108,38 +138,13 @@
 			"$1.css.mf"
 			"$1.js.mf"
 			"$1.html.mf"			
-		)
-		
-		# IF THERE IS AN EXACT MATCH
-		if [ -d $FOLDER ] ; then
-			cd $FOLDER
-			l
-			return
-		fi								
-		
-		# IF THERE IS NO SLASH
-		if [[ "$1" != *"/"* ]]; then
-
-			# SEARCH FOR PARTIAL MATCH
-			MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
-			
-			if [ $MATCH ]; then
-			 	cd $MATCH
-			 	l
-			 	return
-			fi
-		
-		# ELSE IF THERE IS A SLASH
-		else
-			cd $FOLDER
-			l
-			return		
-		fi
+		)		
 		
 		# LOOP THROUGH PATTERNS
 			
 		if [ $# -ge 1 ] ; then
 		
+			# SEE IF PATTERN IS A MATCH
 			for FOLDER in ${PATTERNS[@]}
 			do
 				if [ -d $FOLDER ] ; then
