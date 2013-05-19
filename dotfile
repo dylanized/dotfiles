@@ -106,31 +106,28 @@
 	}
 	
 	function d() {
-				
-		# IF THERE IS AN EXACT MATCH
+					
+		# CONTAINS A SLASH
+		if [[ "$1" = *"/"* ]]; then
+			cd $1
+			l
+			return			
+		fi
+
+		# EXACT MATCH
 		if [ -d $1 ] ; then
 			cd $1
 			l
 			return
 		fi								
-		
-		# IF THERE IS NO SLASH
-		if [[ "$1" != *"/"* ]]; then
 
-			# SEARCH FOR PARTIAL MATCH
-			MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
-			
-			if [ $MATCH ]; then
-			 	cd $MATCH
-			 	l
-			 	return
-			fi
+		# PARTIAL MATCH
+		MATCH=$(find .  -maxdepth 1 -iname "*$1*" -type d -print | head -n1)		
 		
-		# ELSE IF THERE IS A SLASH
-		else
-			cd $1
-			l
-			return		
+		if [ $MATCH ]; then
+		 	cd $MATCH
+		 	l
+		 	return
 		fi
 		
 		# COMMON FOLDER NAME PATTERNS
