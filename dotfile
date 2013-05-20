@@ -37,20 +37,27 @@
 	export TITLEBAR="\[\e]2;\u@${COMPUTERNAME}\a\]"
 	
 	# GIT STATUS
-	function __git_color() {
+	function __git_color() {				
 		git_status="`git status -unormal 2>&1`"
+		
+		# IF THIS IS A REPO
 	    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
-	    	# IF REPO IS CAUGHT UP
-	        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-	            # echo $COLOR_GREEN
-	            echo 32
-	        #elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-	        # ELSE IF REPO HAS CHANGED
-	        else
-	        	# echo $COLOR_YELLOW
-	            echo 33
-	        fi
-	        # TODO - CHECK IF ORIGIN HAS BEEN UPDATED
+	    	# IF WE ARE BEHIND
+	    	if [[ "$git_status" =~ behind ]]; then
+	    		# echo $COLOR_RED
+	    		echo 31
+	    	else
+		    	# IF REPO IS CAUGHT UP
+		        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+		            # echo $COLOR_GREEN
+		            echo 32
+		        #elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+		        # IF REPO HAS CHANGED
+		        else
+		        	# echo $COLOR_YELLOW
+		            echo 33
+		        fi
+		    fi
 	    fi
 	}
 	
