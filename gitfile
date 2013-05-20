@@ -67,16 +67,43 @@
 		echo -e ""
 	}
 	
+	function gu() {
+		echo -e "\033[1m"
+		git remote update
+		echo -e ""		
+	}
+	
+	function gr() {
+		echo -e "\033[1m"
+		git remote "$*"
+		echo -e ""	
+	}
+
+	function gf() {
+		echo -e "\033[1m"
+		git fetch "$*"
+		echo -e ""	
+	}	
+
+	function grm() {
+		echo -e "\033[1m"
+		git rm "$*"
+		echo -e ""	
+	}	
+
+	function gmv() {
+		echo -e "\033[1m"
+		git mv "$*"
+		echo -e ""	
+	}
+			
+	alias u=gu
 	alias gd='git diff'		
 	alias gb='git branch'
 	#alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 	alias gm="git merge"
-	alias gmv='git mv $*'
-	alias gr='git remote'
-	alias gf='git fetch'
-	alias grm='git rm'
-	alias gra='git remote add'
-	alias grao='git remote add origin'
+	alias gra='gr add'
+	alias grao='gr add origin'
 	
 	# GIT STATUS
 	function gs() {
