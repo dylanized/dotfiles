@@ -45,7 +45,7 @@
 	    	# IF WE ARE BEHIND
 	    	if [[ "$git_status" =~ behind ]]; then
 	    		# echo $COLOR_RED
-	    		echo 31
+	    		echo 31 
 	    	else
 		    	# IF REPO IS CAUGHT UP
 		        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
