@@ -88,8 +88,8 @@
 		
 	# MAKE FOLDER AND ENTER IT
 	function m() {
-		echo ""
-		echo "Creating $@ folder..."
+		echo -e "\033[1m"
+		echo -e "Creating $@...\033[0m"
 		mkdir -p "$@" && cd "$@"
 		l
 	}
