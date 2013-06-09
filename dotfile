@@ -65,6 +65,7 @@
 	export GITPROMPT="${GITCOLOR}\$(__git_ps1 ' [%s]')${COLOR_RESET}"	
 	
 	#PS1='\e[0;31m\]\u\e[0;37m\]@\[\e[0;31m\]\h \[\e[0;34m\]\w\[\e[0;33m\]$(__git_ps1 " [%s]")\[\e[m\] '
+	#export PS1="[\e[0;32m]\t [\e[32;1m]\u\h:[\e[0;36m]\w[\e[0m]$ "
 	
 	PS1="${TITLEBAR}${COLOR_RED}\u${COLOR_WHITE}@${COLOR_RED}${COMPUTERNAME} ${COLOR_BLUE}\w${GITPROMPT} "
 	
@@ -85,7 +86,8 @@
 	alias pro=profile
 	alias reload='source ~/.bash_profile'
 	alias re=reload
-		
+	alias ff=ffind	
+	
 	# MAKE FOLDER AND ENTER IT
 	function m() {
 		echo -e "\033[1m"
