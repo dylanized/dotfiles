@@ -88,6 +88,9 @@
 	alias re=reload
 	alias ff=ffind	
 	
+	alias start='sudo apachectl start'
+	alias graceful='sudo apachectl graceful'
+	
 	# MAKE FOLDER AND ENTER IT
 	function m() {
 		echo -e "\033[1m"
@@ -328,11 +331,13 @@
 		smartfile 'vim' $*
 	}
 
-# EDITOR HELPER. WHY IS IT W? I HAVE NO IDEA
+# OPEN EDITOR HELPER
 
-	function w() {
+	function o() {
 		smartfile 'coda' $*
 	}
+	
+	alias co=o
 	
 # CREATE BACKUP OF FILE
 

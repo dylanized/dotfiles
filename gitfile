@@ -1,7 +1,7 @@
 # GIT HELPERS!
 
 	# QUICK CHECKOUT
-	alias gco='git checkout'
+	alias go='git checkout'
 	
 	# QUICK ADD
 	function ga() {
@@ -110,6 +110,18 @@
 		echo -e "\033[1m"
 		git status -sb
 		echo -e ""
+	}	
+
+	alias g=gs
+	
+	function lg() {
+		l
+		gs
+	}
+
+	function gsd() {
+		gs
+		gd
 	}
 		
 	# INITIALIZE NEW REPO

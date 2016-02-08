@@ -1,30 +1,37 @@
 # Aliases
 
-	alias s=sails
-	alias sl="sails lift"
 	alias ni="npm install --save"
+	alias nid="npm install --save-dev"
+	alias nr="npm run"
 	alias ng="sudo npm install -g"
 	alias nv="node --version"
 	alias nu="npm update"	
-	alias g=grunt
+
+	alias gr=grunt
+	alias grs='grunt serve'
 	alias snl='sudo npm link'
-	alias smash=asset-smasher
-	alias sm=smash
 	alias nm='d node_modules'
 	alias np='npm publish ./'
-
+	alias nd='n --debug'
+	
+	alias mo=mocha
+	alias mog='mocha --grep'
+	alias cc='conventional-changelog -p angular -i CHANGELOG.md -w'
+	alias ccall='conventional-changelog -p angular -i CHANGELOG.md -w -r 0'
+	alias rlog='rm *.log'
+	alias rl=rlog
+	
+	alias vu='vagrant up'	
+	alias vd='vagrant destroy'
+	alias vs='vagrant ssh'	
+	
 	function n() {
 		echo ""	
 		echo -en "\033[1m"
 		
 		FILENAME=""
 		
-		if [[ $1 = "debug" || $1 = "--debug" ]]; then
-			# RUN APP.JS IN DEBUG MODE
-			FILENAME="app.js --debug"
-			echo "** DEBUG MODE **"
-			echo ""
-		elif [ $1 ] ; then
+		if [ $1 ] ; then
 			# ARGUMENT(S) GIVEN	
 			if [[ "$1" != *.js* ]] ; then
 				FILENAME="$1.js"
@@ -40,12 +47,11 @@
 		elif [ -f index.js ]; then
 			# NO ARGUMENTS, RUN INDEX.JS
 			FILENAME="index.js"
-		elif [ -f scraper.js ]; then
-			# NO ARGUMENTS, RUN SCRAPER.JS
-			FILENAME="scraper.js"
 		fi
 		
-		if [[ $FILENAME ]]; then
+		if [[ $1 = "debug" || $1 = "--debug" ]]; then
+			node-debug $FILENAME ${@}			
+		elif [[ $FILENAME ]]; then
 			node $FILENAME ${@}
 		else
 			echo "ERROR: script not found"
@@ -56,13 +62,23 @@
 		
 	}
 	
-	alias nd="n --debug"
-	
 	function nvu() {
 		COMMAND="nvm use v"
 		COMMANDVER=$COMMAND$1
 		$COMMANDVER
-	}		
+	}	
+	
+	function nt() {
+		if [[ "$1" == "--all" || "$1" == "-a" ]]; then
+			npm run mocha -- test/[^_]*.js
+		elif [[ "$2" == "--all" || "$2" == "-a" ]]; then
+			npm run mocha -- test/$1*.js
+		elif [[ "$1" ]]; then
+			npm run mocha -- test/$1*.js --bail
+		else
+			npm run mocha -- test/[^_]*.js --bail
+		fi
+	}
 
 # NVM setup
 
