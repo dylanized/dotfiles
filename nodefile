@@ -6,6 +6,9 @@
 	alias ng="sudo npm install -g"
 	alias nv="node --version"
 	alias nu="npm update"	
+	
+	alias bi="bower install"
+	alias bu="bower update"
 
 	alias gr=grunt
 	alias grs='grunt serve'
@@ -22,8 +25,11 @@
 	alias rl=rlog
 	
 	alias vu='vagrant up'	
+	alias vh='vagrant halt'
 	alias vd='vagrant destroy'
-	alias vs='vagrant ssh'	
+	alias vs='vagrant ssh'
+	alias vp='vagrant provision'
+	alias vbu='vagrant box update'	
 	
 	function n() {
 		echo ""	

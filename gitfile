@@ -52,11 +52,15 @@
 		echo -e ""
 	}
 		
-	alias gp='git push'
+	alias gp=push
+	
+	function push() {	
+		git push REMOTE --all	
+		git push REMOTE --tags	
+	}
 	
 	alias gpo='git push origin'
 	
-	alias push='git push'
 	alias pull='git pull'
 	
 	function gpa() {
@@ -146,10 +150,11 @@
 		echo -e ""	
 	}
 	
-	# ??
-	function undo() {
+	# GIT UNDO
+	function gundo() {
 		echo -e "\033[1m"
-		git revert HEAD
+		#git revert HEAD
+		git reset --soft HEAD~
 		echo -e ""		
 	}
 
