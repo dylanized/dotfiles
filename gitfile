@@ -3,6 +3,9 @@
 	# QUICK CHECKOUT
 	alias go='git checkout'
 	
+	# CHECKOUT NEW BRANCH
+	alias gob='git checkout -b'
+	
 	# QUICK ADD
 	function ga() {
 		git add $*
