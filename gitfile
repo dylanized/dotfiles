@@ -4,16 +4,23 @@
 	alias gcl='git clone'
 	
 	# GIT PULL
-	alias pull='git pull origin'
+	alias pull='git pull'
+	
+	# GIT PULL ORIGIN
+	alias pull='git pullo'	
+
+	# GIT PULL ORIGIN MASTER
+	alias pull='git pullm'	
 	
 	# GIT PUSH
-	alias push='git push origin'
+	alias push='git push'
+	alias gp=push
 	
-	# GIT PULL MASTER
-	alias pullm='git pull origin master'
-	
-	# GIT PUSH MASTER
-	alias pushm='git push origin master'	
+	# GIT PUSH ORIGIN
+	alias gpo='git push origin'
+
+	# GIT PUSH ORIGIN MASTER
+	alias gpom='git push origin master'
 	
 	# GIT BRANCHES
 	alias gb='git branch'
