@@ -1,116 +1,37 @@
-# GIT HELPERS!
+# HOPERATOR GIT HELPERS
 
-	# QUICK CHECKOUT
+	# GIT CLONE
+	alias gcl='git clone'
+	
+	# GIT PULL
+	alias pull='git pull origin'
+	
+	# GIT PUSH
+	alias push='git push origin'
+	
+	# GIT PULL MASTER
+	alias pullm='git pull origin master'
+	
+	# GIT PUSH MASTER
+	alias pushm='git push origin master'	
+	
+	# GIT BRANCHES
+	alias gb='git branch'
+	
+	# GIT BRANCH CREATE
+	alias gbc='git checkout -b'
+	
+	# GO TO BRANCH
 	alias go='git checkout'
 	
-	# CHECKOUT NEW BRANCH
-	alias gob='git checkout -b'
+	# GIT MERGE
+	alias gm='git merge'
 	
-	# QUICK ADD
-	function ga() {
-		git add $*
-	}
-
-	# ADD ALL CHANGED AND NEW FILES
-	function gaa() {
-		git add -A
-	}
+	# GIT MERGE MASTER
+	alias gmm='git merge master'	
 	
-	# QUICK COMMIT
-	function gc() {
-		echo -e "\033[1m"
-		git commit -m "$*"
-		echo -e "" 
-	}
-	
-	# ADD TRACKED CHANGES, THEN COMMIT
-	function gac() {
-		echo -e "\033[1m"
-		git commit -am "$*"
-		echo -e ""
-	}
-	
-	# ADD TRACKED CHANGES, COMMIT, THEN PUSH
-	function gacp() {
-		echo -e "\033[1m"
-		git commit -am "$*"	
-		git push
-		echo -e ""
-	}
-	
-	# ADD ALL CHANGES, THEN COMMIT	
-	function c() {
-		echo -e "\033[1m"
-		git add -A
-		git commit -m "$*"
-		echo -e ""
-	}	
-
-	#  ADD ALL CHANGES, COMMIT, THEN PUSH	
-	function p() {
-		echo -e "\033[1m"
-		git add -A
-		git commit -m "$*"
-		git push
-		echo -e ""
-	}
-		
-	alias gp=push
-	
-	function push() {	
-		git push REMOTE --all	
-		git push REMOTE --tags	
-	}
-	
-	alias gpo='git push origin'
-	
-	alias pull='git pull'
-	
-	function gpa() {
-		echo -e "\033[1m"
-		git add -A
-		git commit -m "$*"
-		git push all master	
-		echo -e ""
-	}
-	
-	function gu() {
-		echo -e "\033[1m"
-		git remote update
-		echo -e ""		
-	}
-	
-	function gr() {
-		echo -e "\033[1m"
-		git remote "$*"
-		echo -e ""	
-	}
-
-	function gf() {
-		echo -e "\033[1m"
-		git fetch "$*"
-		echo -e ""	
-	}	
-
-	function grm() {
-		echo -e "\033[1m"
-		git rm "$*"
-		echo -e ""	
-	}	
-
-	function gmv() {
-		echo -e "\033[1m"
-		git mv "$*"
-		echo -e ""	
-	}
-			
-	alias u=gu
-	alias gd='git diff'		
-	alias gb='git branch'
-	#alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-	alias gm="git merge"
-	alias gra='gr add'
-	alias grao='gr add origin'
+	# GIT BRANCH DELETE
+	alias gbd='git branch -d'
 	
 	# GIT STATUS
 	function gs() {
@@ -118,41 +39,33 @@
 		git status -sb
 		echo -e ""
 	}	
-
 	alias g=gs
 	
-	function lg() {
-		l
-		gs
-	}
-
-	function gsd() {
-		gs
-		gd
+	# GIT ADD
+	function ga() {
+		git add $*
+	}	
+	
+	# GIT ADD ALL
+	function gaa() {
+		git add -A
 	}
 		
-	# INITIALIZE NEW REPO
-	function gi() {
+	# GIT RESET
+	function greset() {
 		echo -e "\033[1m"
-		git init
-		git add *
-		git commit -m "initial commit"
-		echo -e ""
+		git reset
+		echo -e ""		
 	}
+	alias gre=greset	
 	
-	function glog() {
+	# GIT COMMIT
+	function gc() {
 		echo -e "\033[1m"
-		git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-		echo -e ""
+		git commit -m "$*"
+		echo -e "" 
 	}
-	
-	## RESET WORKING COPY TO HEAD, DELETE ALL CHANGES
-	function ghard() {
-		echo -e "\033[1m"
-		git reset --hard
-		echo -e ""	
-	}
-	
+		
 	# GIT UNDO
 	function gundo() {
 		echo -e "\033[1m"
@@ -160,96 +73,24 @@
 		git reset --soft HEAD~
 		echo -e ""		
 	}
-
-	# UNSTAGE COMMITS
-	function greset() {
+	alias gun=gundo
+	
+	# GIT HARD RESET
+	function ghard() {
 		echo -e "\033[1m"
-		git reset
-		echo -e ""		
+		git reset --hard
+		echo -e ""	
 	}
-	
-	alias gitconfig="vim .gitconfig"
-	alias gitignore="vim .gitignore"
-	alias gconfig=gitconfig
-	alias gignore=gitignore
-	
-# GIT FLOW HELPERS
-
-	alias gfi='git flow init'
-	alias gfs='git flow feature start $1'
-	alias gff='git flow feature finish $1'
+	alias gh=ghard
 		
-# EXPORT GIT TO TEMP FOLDER
+	# GIT MOVE
+	alias gmv='git mv'
 	
-	function gx() {
-		echo -e "\033[1m"
-	   	GXFOLDER=temp
-       	if [ $1 ]; then
-            GXFOLDER=$1
-        fi	
-		rm -rf $GXFOLDER
-		mkdir $GXFOLDER
-		git archive --format=tar master | (cd $GXFOLDER/ && tar -xf -)
-		echo -e ""
-	}
-
-# EXPORT GIT AND UPLOAD TO FTP FOLDER
-# pass in ssh server + folder path
+	# GIT REMOVE
+	alias grm='git rm'
 	
-	function gxp() {
-		echo -e "\033[1m"
-		if [ $# -gt 0  ]; then
-			GXPFOLDER=temp
-			gx
-			rsync -e ssh -av $GXPFOLDER/ $1:$2 --delete
-			rm -rf $GXPFOLDER
-		else
-			echo "ERROR: Missing SSH server or folder path!"
-			echo "Ex: gxp yourserver.com somefolder/subfolder"
-		fi
-		echo -e ""
-	}
-	
-# CREATE BARE REPO
-# First argument is repo name, second argument is path to working tree
-
-	function bare() {
+	# GIT DIFF
+	alias gd='git diff'
 		
-		echo -e "\033[1m"
-	
-		if [ $# = 2 ]; then
-		
-			echo "Creating repo folder $1.git..."
-			mkdir $1.git
-			
-			echo "Setting up bare repo..."
-			cd $1.git
-			git init --bare .
-			
-			echo "Adding deployment hook..."
-			cd hooks
-			
-			cat >post-receive <<EOF
-#!/bin/sh
-GIT_WORK_TREE=$2 git checkout -f
-EOF
-
-			chmod +x post-receive
-			cd ..
-			
-			echo "Creating working tree folder $2"
-			mkdir $2
-			
-			cd ..
-			echo "Done! Push to the repo to export the working tree"		
-			
-		else
-		
-			echo "Please provide repo name and working tree path (from the repo)"
-			echo "EX: bare sample_repo ../../sample_repo.dev"
-			
-		fi
-		
-		echo -e ""
-		
-	}	
+	# GIT LOG
+	alias gl='git log'
