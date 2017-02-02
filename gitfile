@@ -7,10 +7,10 @@
 	alias pull='git pull'
 	
 	# GIT PULL ORIGIN
-	alias pull='git pullo'	
+	alias pullo='git pull origin'	
 
 	# GIT PULL ORIGIN MASTER
-	alias pull='git pullm'	
+	alias pullom='git pull origin master'	
 	
 	# GIT PUSH
 	alias push='git push'
