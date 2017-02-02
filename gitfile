@@ -105,6 +105,12 @@
 	# GIT LOG
 	alias gl='git log'
 	
+	# GIT REMOTE
+	alias gr='git remote'
+	
+	# GIT REMOTE VIEW
+	alias grv='git remote -v'
+	
 	# GIT FLOW HELPERS
 	alias gfi='git flow init'
 	alias gfs='git flow feature start $1'
