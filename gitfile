@@ -1,4 +1,4 @@
-# HOPERATOR GIT HELPERS
+# GIT HELPERS
 
 	# GIT CLONE
 	alias gcl='git clone'
@@ -104,3 +104,80 @@
 		
 	# GIT LOG
 	alias gl='git log'
+	
+	# GIT FLOW HELPERS
+	alias gfi='git flow init'
+	alias gfs='git flow feature start $1'
+	alias gff='git flow feature finish $1'
+		
+	# EXPORT GIT TO TEMP FOLDER	
+	function gx() {
+		echo -e "\033[1m"
+	   	GXFOLDER=temp
+       	if [ $1 ]; then
+            GXFOLDER=$1
+        fi	
+		rm -rf $GXFOLDER
+		mkdir $GXFOLDER
+		git archive --format=tar master | (cd $GXFOLDER/ && tar -xf -)
+		echo -e ""
+	}
+
+	# EXPORT GIT AND UPLOAD TO FTP FOLDER
+	# pass in ssh server + folder path		
+	function gxp() {
+		echo -e "\033[1m"
+		if [ $# -gt 0  ]; then
+			GXPFOLDER=temp
+			gx
+			rsync -e ssh -av $GXPFOLDER/ $1:$2 --delete
+			rm -rf $GXPFOLDER
+		else
+			echo "ERROR: Missing SSH server or folder path!"
+			echo "Ex: gxp yourserver.com somefolder/subfolder"
+		fi
+		echo -e ""
+	}
+	
+	# CREATE BARE REPO
+	# First argument is repo name, second argument is path to working tree
+	function bare() {
+		
+		echo -e "\033[1m"
+	
+		if [ $# = 2 ]; then
+		
+			echo "Creating repo folder $1.git..."
+			mkdir $1.git
+			
+			echo "Setting up bare repo..."
+			cd $1.git
+			git init --bare .
+			
+			echo "Adding deployment hook..."
+			cd hooks
+			
+			cat >post-receive <<EOF
+#!/bin/sh
+GIT_WORK_TREE=$2 git checkout -f
+EOF
+
+			chmod +x post-receive
+			cd ..
+			
+			echo "Creating working tree folder $2"
+			mkdir $2
+			
+			cd ..
+			echo "Done! Push to the repo to export the working tree"		
+			
+		else
+		
+			echo "Please provide repo name and working tree path (from the repo)"
+			echo "EX: bare sample_repo ../../sample_repo.dev"
+			
+		fi
+		
+		echo -e ""
+		
+	}	
