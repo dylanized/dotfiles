@@ -41,7 +41,7 @@
 	alias gmm='git merge master'	
 	
 	# GIT BRANCH DELETE
-	alias gbd='git branch -d'
+	alias gbd='git branch -D'
 	
 	# GIT STATUS
 	function gs() {
