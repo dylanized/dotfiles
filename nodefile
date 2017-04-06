@@ -4,12 +4,28 @@
 	alias nid="npm install --save-dev"
 	alias nr="npm run"
 	alias nrs="npm start"
+	alias ns=nrs
 	alias nrd="npm run dev"
-	alias nrl="npm run lint"	
-	alias ng="sudo npm install -g"
+	alias nd=nrd
+	alias nrdb="npm run debug"
+	alias debug=nrdb
+	alias nrp="npm run start:prod"
+	alias prod=nrdb	
+	alias nrb="npm run build"
+	alias nb=nrb
+	alias nrd="npm run watch"
+	alias nd=nrw
+	alias nrd="npm run clean"
+	alias nd=nrc
+	alias nrl="npm run lint"
+	alias nl=nrl
+	alias nrt="npm run test"
+	alias nt=nrt
+	alias nig="sudo npm install -g"
+	alias ng=nig
 	alias nv="node --version"
-	alias nu="npm update"	
-	
+	alias nu="npm update"
+
 	alias bi="bower install"
 	alias bu="bower update"
 
@@ -19,29 +35,29 @@
 	alias nm='d node_modules'
 	alias np='npm publish ./'
 	alias nd='n --debug'
-	
+
 	alias mo=mocha
 	alias mog='mocha --grep'
 	alias cc='conventional-changelog -p angular -i CHANGELOG.md -w'
 	alias ccall='conventional-changelog -p angular -i CHANGELOG.md -w -r 0'
 	alias rlog='rm *.log && rm *.log.*'
 	alias rl=rlog
-	
-	alias vu='vagrant up'	
+
+	alias vu='vagrant up'
 	alias vh='vagrant halt'
 	alias vd='vagrant destroy'
 	alias vs='vagrant ssh'
 	alias vp='vagrant provision'
-	alias vbu='vagrant box update'	
-	
+	alias vbu='vagrant box update'
+
 	function n() {
-		echo ""	
+		echo ""
 		echo -en "\033[1m"
-		
+
 		FILENAME=""
-		
+
 		if [ $1 ] ; then
-			# ARGUMENT(S) GIVEN	
+			# ARGUMENT(S) GIVEN
 			if [[ "$1" != *.js* ]] ; then
 				FILENAME="$1.js"
 			elif [[ "$1" == *--* ]] ; then
@@ -57,26 +73,26 @@
 			# NO ARGUMENTS, RUN INDEX.JS
 			FILENAME="index.js"
 		fi
-		
+
 		if [[ $1 = "debug" || $1 = "--debug" ]]; then
-			node-debug $FILENAME ${@}			
+			node-debug $FILENAME ${@}
 		elif [[ $FILENAME ]]; then
 			node $FILENAME ${@}
 		else
 			echo "ERROR: script not found"
 		fi
-				
+
 		echo -en "\033[0m"
-		echo ""		
-		
+		echo ""
+
 	}
-	
+
 	function nvu() {
 		COMMAND="nvm use v"
 		COMMANDVER=$COMMAND$1
 		$COMMANDVER
-	}	
-	
+	}
+
 	function nt() {
 		if [[ "$1" == "--all" || "$1" == "-a" ]]; then
 			npm run mocha -- test/[^_]*.js
@@ -91,7 +107,7 @@
 
 # NVM setup
 
-	[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh # This loads NVM	
+	[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh # This loads NVM
 	[[ -s ~/.nvm/bash_completion ]] && . ~/.nvm/bash_completion # This loads NVM
 
 # NPM completion
@@ -99,7 +115,7 @@
 	if npm -v >/dev/null 2>&1; then
 	. <(npm completion)
 	fi
-	
+
 	###-begin-npm-completion-###
 	#
 	# npm command completion script
@@ -107,11 +123,11 @@
 	# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
 	# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
 	#
-	
+
 	COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
 	COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
 	export COMP_WORDBREAKS
-	
+
 	if type complete &>/dev/null; then
 	_npm_completion () {
 	local si="$IFS"
