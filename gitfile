@@ -2,127 +2,134 @@
 
 	# GIT CLONE
 	alias gcl='git clone'
-	
+
 	# GIT PULL
 	alias pull='git pull'
-	
+
 	# GIT PULL ORIGIN
-	alias pullo='git pull origin'	
+	alias pullo='git pull origin'
 
 	# GIT PULL ORIGIN MASTER
-	alias pullom='git pull origin master'	
-	
+	alias pullom='git pull origin master'
+
 	# GIT PUSH
 	alias push='git push'
 	alias gp=push
-	
+
 	# GIT PUSH ORIGIN
 	alias gpo='git push origin'
 
 	# GIT PUSH ORIGIN MASTER
 	alias gpom='git push origin master'
-	
+
+	# GIT PUSH ORIGIN MASTER NO VERIFY
+	alias gpomv='gpom --no-verify'
+
 	# GIT PUSH HEROKU MASTER
 	alias gphm='git push heroku master'
-	
+
 	# GIT BRANCHES
 	alias gb='git branch'
-	
+
 	# GIT BRANCH CREATE
 	alias gbc='git checkout -b'
-	
+
 	# GO TO BRANCH
 	alias go='git checkout'
-	
+
 	# GIT MERGE
 	alias gm='git merge'
-	
+
 	# GIT MERGE MASTER
-	alias gmm='git merge master'	
-	
+	alias gmm='git merge master'
+
 	# GIT BRANCH DELETE
 	alias gbd='git branch -D'
-	
+
 	# GIT STATUS
 	function gs() {
 		echo -e "\033[1m"
 		git status -sb
 		echo -e ""
-	}	
+	}
 	alias g=gs
-	
+
 	# GIT ADD
 	function ga() {
 		git add $*
-	}	
-	
+	}
+
 	# GIT ADD ALL
 	function gaa() {
 		git add -A
 	}
-		
+
 	# GIT RESET
 	function greset() {
 		echo -e "\033[1m"
 		git reset
-		echo -e ""		
+		echo -e ""
 	}
-	alias gre=greset	
-	
+	alias gre=greset
+
 	# GIT COMMIT
 	function gc() {
 		echo -e "\033[1m"
 		git commit -m "$*"
-		echo -e "" 
+		echo -e ""
 	}
-		
+
 	# GIT UNDO
 	function gundo() {
 		echo -e "\033[1m"
 		#git revert HEAD
 		git reset --soft HEAD~
-		echo -e ""		
+		echo -e ""
 	}
 	alias gun=gundo
-	
+
 	# GIT HARD RESET
 	function ghard() {
 		echo -e "\033[1m"
 		git reset --hard
-		echo -e ""	
+		echo -e ""
 	}
 	alias gh=ghard
-		
+
 	# GIT MOVE
 	alias gmv='git mv'
-	
+
 	# GIT REMOVE
 	alias grm='git rm'
-	
+
 	# GIT DIFF
 	alias gd='git diff'
-		
+
 	# GIT LOG
 	alias gl='git log'
-	
+
 	# GIT REMOTE
 	alias gr='git remote'
-	
+
 	# GIT REMOTE VIEW
 	alias grv='git remote -v'
-	
+
+	# GIT REDO (CHERRY PICK)
+
+	# GIT REVERT
+
 	# GIT FLOW HELPERS
 	alias gfi='git flow init'
 	alias gfs='git flow feature start $1'
 	alias gff='git flow feature finish $1'
-		
-	# EXPORT GIT TO TEMP FOLDER	
+
+	# EXPORT GIT TO TEMP FOLDER
 	function gx() {
 		echo -e "\033[1m"
 	   	GXFOLDER=temp
        	if [ $1 ]; then
             GXFOLDER=$1
-        fi	
+        fi
 		rm -rf $GXFOLDER
 		mkdir $GXFOLDER
 		git archive --format=tar master | (cd $GXFOLDER/ && tar -xf -)
@@ -130,7 +137,7 @@
 	}
 
 	# EXPORT GIT AND UPLOAD TO FTP FOLDER
-	# pass in ssh server + folder path		
+	# pass in ssh server + folder path
 	function gxp() {
 		echo -e "\033[1m"
 		if [ $# -gt 0  ]; then
@@ -144,25 +151,25 @@
 		fi
 		echo -e ""
 	}
-	
+
 	# CREATE BARE REPO
 	# First argument is repo name, second argument is path to working tree
 	function bare() {
-		
+
 		echo -e "\033[1m"
-	
+
 		if [ $# = 2 ]; then
-		
+
 			echo "Creating repo folder $1.git..."
 			mkdir $1.git
-			
+
 			echo "Setting up bare repo..."
 			cd $1.git
 			git init --bare .
-			
+
 			echo "Adding deployment hook..."
 			cd hooks
-			
+
 			cat >post-receive <<EOF
 #!/bin/sh
 GIT_WORK_TREE=$2 git checkout -f
@@ -170,20 +177,20 @@ EOF
 
 			chmod +x post-receive
 			cd ..
-			
+
 			echo "Creating working tree folder $2"
 			mkdir $2
-			
+
 			cd ..
-			echo "Done! Push to the repo to export the working tree"		
-			
+			echo "Done! Push to the repo to export the working tree"
+
 		else
-		
+
 			echo "Please provide repo name and working tree path (from the repo)"
 			echo "EX: bare sample_repo ../../sample_repo.dev"
-			
+
 		fi
-		
+
 		echo -e ""
-		
-	}	
+
+	}
