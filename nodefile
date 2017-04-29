@@ -13,10 +13,10 @@
 	alias prod=nrdb
 	alias nrb="npm run build"
 	alias nb=nrb
-	alias nrd="npm run watch"
-	alias nd=nrw
-	alias nrd="npm run clean"
-	alias nd=nrc
+	alias nrw="npm run watch"
+	alias nw=nrw
+	alias nrc="npm run clean"
+	alias nc=nrc
 	alias nrl="npm run --silent lint"
 	alias nl=nrl
 	alias nrt="npm run test"
