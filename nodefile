@@ -10,7 +10,7 @@
 	alias nrdb="npm run debug"
 	alias debug=nrdb
 	alias nrp="npm run prod"
-	alias prod=nrdb
+	alias prod=nrp
 	alias nrb="npm run build"
 	alias nb=nrb
 	alias nrw="npm run watch"
