@@ -34,7 +34,6 @@
 	alias snl='sudo npm link'
 	alias nm='d node_modules'
 	alias np='npm publish ./'
-	alias nd='n --debug'
 
 	alias mo=mocha
 	alias mog='mocha --grep'
