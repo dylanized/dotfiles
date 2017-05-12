@@ -37,6 +37,9 @@
 	# GO TO BRANCH
 	alias go='git checkout'
 
+	# GO TO MASTER
+	alias gom='go master'	
+
 	# GIT MERGE
 	alias gm='git merge'
 
