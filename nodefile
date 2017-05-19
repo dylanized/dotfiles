@@ -25,6 +25,7 @@
 	alias ng=nig
 	alias nv="node --version"
 	alias nu="npm update"
+	alias op="o package.json"
 
 	alias bi="bower install"
 	alias bu="bower update"
