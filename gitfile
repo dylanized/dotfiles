@@ -38,7 +38,11 @@
 	alias go='git checkout'
 
 	# GO TO MASTER
-	alias gom='go master'	
+	alias gom='go master'
+
+	# GO TO MASTER & PULL
+	alias gomp='gom; pull'
+	alias gmp=gomp
 
 	# GIT MERGE
 	alias gm='git merge'
