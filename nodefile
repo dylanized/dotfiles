@@ -21,9 +21,11 @@
 	alias nl=nrl
 	alias nrt="npm run test"
 	alias nt=nrt
+	alias nrv="npm run validate"
+	alias nv=nrv
 	alias nig="sudo npm install -g"
 	alias ng=nig
-	alias nv="node --version"
+	alias nver="node --version"
 	alias nu="npm update"
 	alias op="o package.json"
 
