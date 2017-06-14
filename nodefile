@@ -2,6 +2,7 @@
 
 	alias ni="npm install --save"
 	alias nid="npm install --save-dev"
+	alias ng="sudo npm install -g"
 	alias nr="npm run"
 	alias nrs="npm start"
 	alias ns=nrs
@@ -23,8 +24,6 @@
 	alias nt=nrt
 	alias nrv="npm run validate"
 	alias nv=nrv
-	alias nig="sudo npm install -g"
-	alias ng=nig
 	alias nver="node --version"
 	alias nu="npm update"
 	alias op="o package.json"
