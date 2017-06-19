@@ -28,8 +28,11 @@
 	# GIT PUSH HEROKU MASTER
 	alias gphm='git push heroku master'
 
-	# GIT BRANCHES
+	# GIT BRANCH LIST
 	alias gb='git branch'
+
+	# GIT BRANCH SORT BY DATE
+	alias gbs='gb --sort=authordate'
 
 	# GIT BRANCH CREATE
 	alias gbc='git checkout -b'
