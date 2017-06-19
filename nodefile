@@ -4,6 +4,7 @@
 	alias nid="npm install --save-dev"
 	alias ng="sudo npm install -g"
 	alias nr="npm run"
+	alias n=nr
 	alias nrs="npm start"
 	alias ns=nrs
 	alias nrd="npm run dev"
@@ -51,7 +52,7 @@
 	alias vp='vagrant provision'
 	alias vbu='vagrant box update'
 
-	function n() {
+	function no() {
 		echo ""
 		echo -en "\033[1m"
 
@@ -92,18 +93,6 @@
 		COMMAND="nvm use v"
 		COMMANDVER=$COMMAND$1
 		$COMMANDVER
-	}
-
-	function nt() {
-		if [[ "$1" == "--all" || "$1" == "-a" ]]; then
-			npm run mocha -- test/[^_]*.js
-		elif [[ "$2" == "--all" || "$2" == "-a" ]]; then
-			npm run mocha -- test/$1*.js
-		elif [[ "$1" ]]; then
-			npm run mocha -- test/$1*.js --bail
-		else
-			npm run mocha -- test/[^_]*.js --bail
-		fi
 	}
 
 # NVM setup
