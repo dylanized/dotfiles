@@ -36,6 +36,7 @@
 
 	# GIT BRANCH RENAME
 	alias gbm='gb -m'
+	alias gbr=gbm
 
 	# GIT BRANCH CREATE
 	alias gbc='git checkout -b'
@@ -51,7 +52,7 @@
 	alias gmp=gomp
 
 	# GO TO PREVIOUS
-	alias gop='go -'	
+	alias gop='go -'
 
 	# GIT MERGE
 	alias gm='git merge'
