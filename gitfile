@@ -34,6 +34,9 @@
 	# GIT BRANCH SORT BY DATE
 	alias gbs='gb --sort=authordate'
 
+	# GIT BRANCH RENAME
+	alias gbm='gb -m'
+
 	# GIT BRANCH CREATE
 	alias gbc='git checkout -b'
 
@@ -46,6 +49,9 @@
 	# GO TO MASTER & PULL
 	alias gomp='gom; pull'
 	alias gmp=gomp
+
+	# GO TO PREVIOUS
+	alias gop='go -'	
 
 	# GIT MERGE
 	alias gm='git merge'
