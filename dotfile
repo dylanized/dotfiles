@@ -199,6 +199,8 @@
 	alias .5='d ../../../../..'
 	alias ,='d /'
 
+	alias dp='cd -'
+
 	function cd/() {
 		d /
 	}
