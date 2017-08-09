@@ -44,7 +44,7 @@
 	alias mog='mocha --grep'
 	alias cc='conventional-changelog -p angular -i CHANGELOG.md -w'
 	alias ccall='conventional-changelog -p angular -i CHANGELOG.md -w -r 0'
-	alias rlog='rm *.log || rm *.log.* || rm node-report.*'
+	alias rlog='rm *.log &>/dev/null; rm *.log.* &>/dev/null; rm node-report.* &>/dev/null;'
 	alias rl=rlog
 
 	alias vu='vagrant up'
