@@ -30,6 +30,7 @@
 	alias nver="node --version"
 	alias nu="npm update"
 	alias op="o package.json"
+	alias cc="npm run cover:check"
 
 	alias bi="bower install"
 	alias bu="bower update"
