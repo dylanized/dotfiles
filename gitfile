@@ -96,6 +96,13 @@
 		echo -e ""
 	}
 
+	# GIT COMMIT NO VERIFY
+	function gcnv() {
+		echo -e "\033[1m"
+		git commit -m "$*" --no-verify
+		echo -e ""
+	}
+
 	# GIT UNDO
 	function gundo() {
 		echo -e "\033[1m"
