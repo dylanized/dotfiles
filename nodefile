@@ -39,6 +39,7 @@
 	alias grs='grunt serve'
 	alias snl='sudo npm link'
 	alias nm='d node_modules'
+	alias nnm='rm -Rf node_modules'
 	alias np='npm publish ./'
 
 	alias mo=mocha
