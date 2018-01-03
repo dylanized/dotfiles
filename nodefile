@@ -6,7 +6,7 @@
 	alias nr="npm run"
 	alias n=nr
 	alias nrs="npm start"
-	alias ns=nrs
+	alias ns="npm run launch"
 	alias nrd="npm run dev"
 	alias nd=nrd
 	alias nrdb="npm run debug"
@@ -16,6 +16,7 @@
 	alias nrb="npm run build"
 	alias nb=nrb
 	alias nrw="npm run watch"
+	alias nrr="npm run restart"
 	alias nw=nrw
 	alias nrc="npm run clean"
 	alias nc=nrc
