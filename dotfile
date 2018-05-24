@@ -201,10 +201,6 @@
 
 	alias dp='cd -'
 
-	function cd/() {
-		d /
-	}
-
 	# OVERRIDE COMMAND-NOT-FOUND ON UBUNTU/UNIX
 	function command_not_found_handle {
 		d $@
