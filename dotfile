@@ -108,7 +108,7 @@
 
 	function l() {
 		echo "";
-		ls -halF --color=auto $1;
+		ls -halF $1;
 		echo "";
 	}
 
