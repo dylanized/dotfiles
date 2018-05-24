@@ -80,7 +80,7 @@
 	alias sym='ln -s'
 	alias his=history
 
-	alias dotfiles='d ~/.dotfiles'
+	alias dotfiles='cd ~/.dotfiles'
 	alias dot=dotfiles
 	alias profile='vim ~/.bash_profile'
 	alias pro=profile
