@@ -22,8 +22,8 @@
 	# GIT PUSH ORIGIN MASTER
 	alias gpom='git push origin master'
 
-	# GIT PUSH ORIGIN MASTER NO VERIFY
-	alias gpomv='gpom --no-verify'
+	# GIT PUSH ORIGIN NO VERIFY
+	alias gponv='gpo --no-verify'
 
 	# GIT PUSH HEROKU MASTER
 	alias gphm='git push heroku master'

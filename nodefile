@@ -21,6 +21,7 @@
 	alias nc=nrc
 	alias nrl="npm run --silent lint"
 	alias nl=nrl
+	alias nrlf="npm run lint:fix"
 	alias nrt="npm run test"
 	alias nt=nrt
 	alias ntp="nr test:prod"
