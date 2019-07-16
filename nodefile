@@ -18,9 +18,10 @@
 	alias nrr="npm run restart"
 	alias nw=nrw
 	alias nrc="npm run clean"
-	alias nc=nrc
+	#alias nc=nrc
 	alias nrl="npm run --silent lint"
 	alias nl=nrl
+	alias nrf="npm run fix"
 	alias nrlf="npm run lint:fix"
 	alias nrt="npm run test"
 	alias nt=nrt
