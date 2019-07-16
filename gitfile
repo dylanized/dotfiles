@@ -89,6 +89,9 @@
 	}
 	alias gre=greset
 
+	# GIT CHERRY PICK
+	alias gcp='git cherry-pick'
+
 	# GIT COMMIT
 	function gc() {
 		echo -e "\033[1m"
