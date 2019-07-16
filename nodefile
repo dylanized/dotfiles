@@ -27,7 +27,7 @@
 	alias nt=nrt
 	alias ntp="nr test:prod"
 	alias nte="nr test:env"
-	alias nrv="npm run validate"
+	alias nrv="npm run verify"
 	alias nv=nrv
 	alias nver="node --version"
 	alias nu="npm update"
