@@ -24,7 +24,7 @@
 	}
 
 	# REMOVE CONTAINER
-	alias drm='docker rm'
+	alias drm='docker rm -f'
 
 	# REMOVE IMAGE
 	alias drmi='docker rmi'
@@ -36,3 +36,9 @@
 
 	# STOP AND REMOVE ALL CONTAINERS
 	alias dss='drm -f $(docker ps -aq)'
+
+	# DOCKER COMPOSE
+	alias dcu='docker-compose up'
+	alias dcs='docker-compose start'
+	alias dcss='docker-compose stop'
+	alias dcd='docker-compose down'
