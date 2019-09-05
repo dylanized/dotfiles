@@ -61,6 +61,8 @@
 	alias vs='vagrant ssh'
 	alias vp='vagrant provision'
 	alias vbu='vagrant box update'
+	alias vgs='vagrant global-status'
+	alias vg=vgs
 
 	function no() {
 		echo ""
