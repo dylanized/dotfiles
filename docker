@@ -28,11 +28,11 @@
 
 	# REMOVE IMAGE
 	alias drmi='docker rmi'
-
 	alias drimg='docker rmi $(docker images -a -q) -f'
+	alias dclear=drimg
 
 	# REMOVE ALL EXITED CONTAINERS
-	function dclear() {
+	function dclean() {
 		docker rm `docker ps -aq -f status=exited`
 	}
 
@@ -50,3 +50,4 @@
 	alias dl='dlist'
 	alias dkill='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 	alias dk='dkill'
+	alias dup='npm run docker:up'
