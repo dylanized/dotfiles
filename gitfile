@@ -123,6 +123,14 @@
 	}
 	alias gh=ghard
 
+	# GIT HARD RESET MASTER
+	function ghardm() {
+		echo -e "\033[1m"
+		git reset --hard master
+		echo -e ""
+	}
+	alias ghm=ghardm
+
 	# GIT MOVE
 	alias gmv='git mv'
 
